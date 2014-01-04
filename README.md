@@ -77,6 +77,10 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 ## Changelog
 
+__1.0.1 - 04/01/2014__
+
+* Added - Turkish language by muratenez
+
 __1.0.0 - 20/12/2013__
 
 * Initial Release.
