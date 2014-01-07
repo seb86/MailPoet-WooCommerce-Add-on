@@ -11,11 +11,14 @@ Adds a checkbox on checkout page for your customers to subscribe to your MailPoe
 
 == Description ==
 
+> This plugin requires <a href="http://wordpress.org/plugins/wysija-newsletters/" rel="nofollow">MailPoet plugin</a> and <a href="http://wordpress.org/plugins/woocommerce/" rel="nofollow">WooCommerce plugin</a>.
+
 This simple plugin adds a checkbox on checkout page for your customers to subscribe to your MailPoet newsletters.
 
 = Localization =
-* English (default) - always included. *.po file (default.po) in language folder for translations.
-* Turkish by muratenez
+* English (US)[Default] - always included. mailpoet-woocommerce-addon.pot file in language folder for translations.
+* English (UK)
+* Turkish (TR) by muratenez
 
 If you would like to do a translation for the plugin, you can do so via Transifex.  (https://www.transifex.com/projects/p/mailpoet-woocommerce-add-on/)
 
@@ -37,8 +40,8 @@ To contribute to the plugin, visit https://github.com/seb86/MailPoet-WooCommerce
 
 = Minimum Requirements =
 
-* MailPoet
-* WooCommerce
+* MailPoet (http://wordpress.org/plugins/wysija-newsletters/)
+* WooCommerce (http://wordpress.org/plugins/woocommerce/)
 
 = Automatic installation =
 
@@ -77,6 +80,18 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 3. WooCommerce MailPoet Newsletters Enabled.
 
 == Changelog ==
+
+= 1.0.2 - 07/01/2014 =
+
+* Corrected - Default source language from en_GB to en_US, now both UK and US language is available.
+* Renamed - 'lang' folder to 'languages'.
+* Added - mailpoet-woocommerce-addon.pot file.
+* Updated - Read me file.
+
+= 1.0.1 - 04/01/2014 =
+
+ * Added - Turkish language.
+ * Updated - ReadMe file.
 
 = 1.0.0 - 20/12/2013 =
 

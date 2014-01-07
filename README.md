@@ -1,19 +1,22 @@
 # MailPoet WooCommerce Add-on
 
-Contributors: wysija, sebd86
-Tags: mailpoet, wysija, woocommerce, sebs studio, extension, add-on
-Requires at least: 3.5.1
-Tested up to: 3.8
-Stable tag: trunk
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Contributors: wysija, sebd86 
+Tags: mailpoet, wysija, woocommerce, sebs studio, extension, add-on 
+Requires at least: 3.5.1 
+Tested up to: 3.8 
+Stable tag: trunk 
+License: GPLv2 or later 
+License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
 ## Description
+
+> This plugin requires <a href="http://wordpress.org/plugins/wysija-newsletters/" rel="nofollow">MailPoet plugin</a> and <a href="http://wordpress.org/plugins/woocommerce/" rel="nofollow">WooCommerce plugin</a>.
 
 This simple plugin adds a checkbox on checkout page for your customers to subscribe to your MailPoet newsletters.
 
 ## Localization
-* English (default) - always included. *.po file (default.po) in language folder for translations.
+* English (US)[Default] - always included. mailpoet-woocommerce-addon.pot file in language folder for translations.
+* English (UK)
 * Turkish by muratenez
 
 If you would like to do a translation for the plugin, you can do so via Transifex.  (https://www.transifex.com/projects/p/mailpoet-woocommerce-add-on/)
@@ -36,8 +39,8 @@ To contribute to the plugin, visit https://github.com/seb86/MailPoet-WooCommerce
 
 __Minimum Requirements__
 
-* MailPoet
-* WooCommerce
+* MailPoet (http://wordpress.org/plugins/wysija-newsletters/)
+* WooCommerce (http://wordpress.org/plugins/woocommerce/)
 
 __Automatic installation__
 
@@ -76,6 +79,13 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 3. WooCommerce MailPoet Newsletters Enabled.
 
 ## Changelog
+
+__1.0.2 - 07/01/2014__
+
+* Corrected - Default source language from en_GB to en_US, now both UK and US language is available.
+* Renamed - 'lang' folder to 'languages'.
+* Added - mailpoet-woocommerce-addon.pot file.
+* Updated - Read me file.
 
 __1.0.1 - 04/01/2014__
 
