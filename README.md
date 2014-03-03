@@ -83,12 +83,12 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 ## Frequently Asked Questions
 
-Q1. Can I place the checkbox field any where else? =
+Q1. Can I place the checkbox field any where else? 
 A1. No, we haven't designed the plugin to give the shop manager that option. The checkbox field is after the billing and shipping fields near the submit button.
 
 ## Changelog
 
-= 1.0.3 - 03/03/2014 =
+__1.0.3 - 03/03/2014__
 
 * Added - Greek, Portuguese and Russian languages.
 
