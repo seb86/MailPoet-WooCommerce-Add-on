@@ -16,9 +16,12 @@ Adds a checkbox on checkout page for your customers to subscribe to your MailPoe
 This simple plugin adds a checkbox on checkout page for your customers to subscribe to your MailPoet newsletters.
 
 = Localization =
-* English (US)[Default] - always included. mailpoet-woocommerce-addon.pot file in language folder for translations.
-* English (UK)
-* Turkish (TR) by muratenez
+* English (en_US)[Default] - always included. mailpoet-woocommerce-addon.pot file in language folder for translations.
+* English (en_GB)
+* Greek (el)
+* Portuguese (Brazil) (pt_BR)
+* Russian (Russia) (ru_RU)
+* Turkish (tr) by muratenez
 
 If you would like to do a translation for the plugin, you can do so via Transifex.  (https://www.transifex.com/projects/p/mailpoet-woocommerce-add-on/)
 
@@ -41,7 +44,7 @@ To contribute to the plugin, visit https://github.com/seb86/MailPoet-WooCommerce
 = Minimum Requirements =
 
 * MailPoet (http://wordpress.org/plugins/wysija-newsletters/)
-* WooCommerce (http://wordpress.org/plugins/woocommerce/)
+* WooCommerce v2.0.20 (http://wordpress.org/plugins/woocommerce/)
 
 = Automatic installation =
 
@@ -79,7 +82,16 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 2. WooCommerce MailPoet Checkout Settings.
 3. WooCommerce MailPoet Newsletters Enabled.
 
+== Frequently Asked Questions ==
+
+= Can I place the checkbox field any where else? =
+No, we haven't designed the plugin to give the shop manager that option. The checkbox field is after the billing and shipping fields near the submit button.
+
 == Changelog ==
+
+= 1.0.3 - 03/03/2014 =
+
+* Added - Greek, Portuguese and Russian languages.
 
 = 1.0.2 - 07/01/2014 =
 
@@ -96,3 +108,9 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 = 1.0.0 - 20/12/2013 =
 
  * Initial Release.
+
+== Upgrade Notice ==
+
+= 1.0.3 - 03/03/2014 =
+
+* Added - Greek, Portuguese, Russian languages.
