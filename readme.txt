@@ -89,7 +89,7 @@ No, we haven't designed the plugin to give the shop manager that option. The che
 
 == Changelog ==
 
-= 2.0.0 - 10/03/2014 =
+= 2.0.0 - 11/03/2014 =
 
 * Updated - Code structure.
 * Updated - POT file.
@@ -118,7 +118,7 @@ No, we haven't designed the plugin to give the shop manager that option. The che
 
 == Upgrade Notice ==
 
-= 2.0.0 - 10/03/2014 =
+= 2.0.0 - 11/03/2014 =
 
 * Updated - Code structure.
 * Updated - POT file.

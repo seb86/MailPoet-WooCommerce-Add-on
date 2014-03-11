@@ -88,7 +88,7 @@ __Q1. Can I place the checkbox field any where else?__
 A1. No, we haven't designed the plugin to give the shop manager that option. The checkbox field is after the billing and shipping fields near the submit button.
 
 ## Changelog
-__2.0.0 - 10/03/2014__
+__2.0.0 - 11/03/2014__
 
 * Updated - Code structure.
 * Updated - POT file.
