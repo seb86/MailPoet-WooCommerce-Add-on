@@ -1,7 +1,7 @@
 === MailPoet WooCommerce Add-on ===
 Contributors: wysija, sebd86
 Tags: mailpoet, wysija, woocommerce, sebs studio, extension, add-on
-Requires at least: 3.5.1
+Requires at least: 3.7.1
 Tested up to: 3.8
 Stable tag: trunk
 License: GPLv2 or later
@@ -16,9 +16,12 @@ Adds a checkbox on checkout page for your customers to subscribe to your MailPoe
 This simple plugin adds a checkbox on checkout page for your customers to subscribe to your MailPoet newsletters.
 
 = Localization =
-* English (US)[Default] - always included. mailpoet-woocommerce-addon.pot file in language folder for translations.
-* English (UK)
-* Turkish (TR) by muratenez
+* English (en_US)[Default] - always included. mailpoet-woocommerce-addon.pot file in language folder for translations.
+* English (en_GB)
+* Greek (el)
+* Portuguese (Brazil) (pt_BR)
+* Russian (Russia) (ru_RU)
+* Turkish (tr) by muratenez
 
 If you would like to do a translation for the plugin, you can do so via Transifex.  (https://www.transifex.com/projects/p/mailpoet-woocommerce-add-on/)
 
@@ -41,7 +44,7 @@ To contribute to the plugin, visit https://github.com/seb86/MailPoet-WooCommerce
 = Minimum Requirements =
 
 * MailPoet (http://wordpress.org/plugins/wysija-newsletters/)
-* WooCommerce (http://wordpress.org/plugins/woocommerce/)
+* WooCommerce v2.0.20 (http://wordpress.org/plugins/woocommerce/)
 
 = Automatic installation =
 
@@ -59,13 +62,13 @@ The manual installation method involves downloading my plugin and uploading it t
 
 = Setting up the Plugin =
 
-Simply config this plugin under WooCommerce settings in the MailPoet tab. The settings are in two sections. 'General | Newsletters'
+Simply config this plugin under WooCommerce settings in the MailPoet tab. The settings are in two sections. 'General | Lists'
 
 Under 'General' simply enable the checkbox field to show on the checkout page.
 
 You can also change the label of the checkbox. Default 'Yes, add me to your mailing list'
 
-Next is 'Newsletters'. Each list you created in MailPoet that you have enabled to send to is listed here. Simply tick the checkbox next to the Newsletter list your customers will be subscribed to and press 'Save Changes'.
+Next is 'Lists'. Each list you created in MailPoet that you have enabled to send to is listed here. Simply tick the checkbox next to the list your customers will be subscribed to and press 'Save Changes'.
 
 That's it, now when your customers tick the subscribe button on the checkout page, they will be subscribed to the newsletters you selected when processing an order.
 
@@ -79,7 +82,23 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 2. WooCommerce MailPoet Checkout Settings.
 3. WooCommerce MailPoet Newsletters Enabled.
 
+== Frequently Asked Questions ==
+
+= Can I place the checkbox field any where else? =
+No, we haven't designed the plugin to give the shop manager that option. The checkbox field is after the billing and shipping fields near the submit button.
+
 == Changelog ==
+
+= 2.0.0 - 11/03/2014 =
+
+* Updated - Code structure.
+* Updated - POT file.
+* Updated - Read me file.
+* Now Supports - WooCommerce v2.0 and up, v2.1 and up.
+
+= 1.0.3 - 03/03/2014 =
+
+* Added - Greek, Portuguese and Russian languages.
 
 = 1.0.2 - 07/01/2014 =
 
@@ -96,3 +115,12 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 = 1.0.0 - 20/12/2013 =
 
  * Initial Release.
+
+== Upgrade Notice ==
+
+= 2.0.0 - 11/03/2014 =
+
+* Updated - Code structure.
+* Updated - POT file.
+* Updated - Read me file.
+* Now Supports - WooCommerce v2.0 and up, v2.1 and up.

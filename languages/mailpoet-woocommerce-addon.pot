@@ -1,74 +1,205 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MailPoet WooCommerce Add-on\n"
-"POT-Creation-Date: 2013-12-19 18:23+0100\n"
-"PO-Revision-Date: 2014-01-07 16:56+0100\n"
-"Last-Translator: Sebastien <sebastien@sebs-studio.com>\n"
+"POT-Creation-Date: 2014-03-11 18:24+0100\n"
+"PO-Revision-Date: 2014-03-11 18:25+0100\n"
+"Last-Translator: Sebastien <sebastien@ocean-themes.com>\n"
 "Language-Team: Sebs Studio <sebastien@sebs-studio.com>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.6.4\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: mailpoet-woocommerce-addon.php:58 include/settings.php:33
-msgid "Yes, add me to your mailing list"
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:40
+msgid "Documentation"
 msgstr ""
 
-#: mailpoet-woocommerce-addon.php:94
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:43
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:86
+#, php-format
+msgid ""
+"Thank you for using %s :) Should you need help using %s please read the "
+"documentation."
+msgstr ""
+
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:45
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:88
+#, php-format
+msgid "%s Documentation"
+msgstr ""
+
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:51
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:90
+msgid "Support"
+msgstr ""
+
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:54
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:91
+#, php-format
+msgid ""
+"After <a href=\"%s\">reading the documentation</a>, for further assistance "
+"you can use the <a href=\"%s\">community forum</a>."
+msgstr ""
+
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:56
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:93
+msgid ""
+"Before asking for help I recommend checking the status page to identify any "
+"problems with your configuration."
+msgstr ""
+
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:58
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:69
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:98
+msgid "System Status"
+msgstr ""
+
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:58
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:98
+msgid "Community Support"
+msgstr ""
+
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:64
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:95
+msgid "Found a bug?"
+msgstr ""
+
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:67
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:96
+#, php-format
+msgid ""
+"If you find a bug within <strong>%s</strong> you can create a ticket via <a "
+"href=\"%s\">Github issues</a>. Ensure you read the <a href=\"%s"
+"\">contribution guide</a> prior to submitting your report. Be as descriptive "
+"as possible and please include your <a href=\"%s\">system status report</a>."
+msgstr ""
+
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:69
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:98
+msgid "Report a bug"
+msgstr ""
+
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:74
+msgid "For more information:"
+msgstr ""
+
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:75
+#: includes/admin/settings/class-mailpoet-woocommerce-settings.php:25
+#: includes/admin/settings/v2.0.20/class-mailpoet-woocommerce-admin-settings.php:25
 msgid "MailPoet"
 msgstr ""
 
-#: mailpoet-woocommerce-addon.php:112
-msgid "You do not have sufficient permissions to access this page."
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:76
+msgid "Project on WordPress.org"
 msgstr ""
 
-#: mailpoet-woocommerce-addon.php:125
+#: includes/admin/class-mailpoet-woocommerce-admin-help.php:77
+msgid "Project on Github"
+msgstr ""
+
+#: includes/admin/class-mailpoet-woocommerce-admin-settings.php:38
+msgid "Action failed. Please refresh the page and retry."
+msgstr ""
+
+#: includes/admin/class-mailpoet-woocommerce-install.php:116
+msgid "What's new:"
+msgstr ""
+
+#: includes/admin/mailpoet-woocommerce-admin-functions.php:21
+msgid "MailPoet WooCommerce Add-on"
+msgstr ""
+
+#: includes/admin/settings/class-mailpoet-woocommerce-settings.php:41
+#: includes/admin/settings/v2.0.20/class-mailpoet-woocommerce-admin-settings.php:129
 msgid "General"
 msgstr ""
 
-#: mailpoet-woocommerce-addon.php:126 include/settings-newsletters.php:22
-#: include/settings.php:46
-msgid "Newsletters"
+#: includes/admin/settings/class-mailpoet-woocommerce-settings.php:42
+#: includes/admin/settings/class-mailpoet-woocommerce-settings.php:96
+#: includes/admin/settings/v2.0.20/class-mailpoet-woocommerce-admin-settings.php:80
+#: includes/admin/settings/v2.0.20/class-mailpoet-woocommerce-admin-settings.php:130
+msgid "Lists"
 msgstr ""
 
-#: include/settings-newsletters.php:21
-msgid "Enabled"
-msgstr ""
-
-#: include/settings.php:13
+#: includes/admin/settings/class-mailpoet-woocommerce-settings.php:61
+#: includes/admin/settings/v2.0.20/class-mailpoet-woocommerce-admin-settings.php:45
 msgid "MailPoet Newsletter"
 msgstr ""
 
-#: include/settings.php:15
+#: includes/admin/settings/class-mailpoet-woocommerce-settings.php:63
+#: includes/admin/settings/v2.0.20/class-mailpoet-woocommerce-admin-settings.php:47
 msgid ""
 "Now your customers can subscribe to newsletters you have created with "
-"MailPoet. Simple setup your settings below and press \"Save Changes\"."
+"MailPoet. Simply setup your settings below and press \"Save Changes\"."
 msgstr ""
 
-#: include/settings.php:20
+#: includes/admin/settings/class-mailpoet-woocommerce-settings.php:68
+#: includes/admin/settings/v2.0.20/class-mailpoet-woocommerce-admin-settings.php:52
 msgid "Enable subscribe on checkout"
 msgstr ""
 
-#: include/settings.php:21
+#: includes/admin/settings/class-mailpoet-woocommerce-settings.php:69
+#: includes/admin/settings/v2.0.20/class-mailpoet-woocommerce-admin-settings.php:53
 msgid "Add a subscribe checkbox to your checkout page."
 msgstr ""
 
-#: include/settings.php:28
+#: includes/admin/settings/class-mailpoet-woocommerce-settings.php:76
+#: includes/admin/settings/v2.0.20/class-mailpoet-woocommerce-admin-settings.php:60
 msgid "Checkbox label"
 msgstr ""
 
-#: include/settings.php:29
+#: includes/admin/settings/class-mailpoet-woocommerce-settings.php:77
+#: includes/admin/settings/v2.0.20/class-mailpoet-woocommerce-admin-settings.php:61
 msgid "Enter a message to place next to the checkbox."
 msgstr ""
 
-#: include/settings.php:48
+#: includes/admin/settings/class-mailpoet-woocommerce-settings.php:81
+#: includes/admin/settings/v2.0.20/class-mailpoet-woocommerce-admin-settings.php:65
+msgid "Yes, add me to your mailing list"
+msgstr ""
+
+#: includes/admin/settings/class-mailpoet-woocommerce-settings.php:98
+#: includes/admin/settings/v2.0.20/class-mailpoet-woocommerce-admin-settings.php:82
 msgid ""
-"Here is the list of newsletters you can assign the customer to when they "
-"subscribe. Simply tick the newsletters you want your customers to subscribe "
-"to and press \"Save Changes\"."
+"Here lists all the campaigns you can assign the customers to when they "
+"subscribe. Simply tick the lists you want your customers to subscribe to and "
+"press \"Save Changes\"."
+msgstr ""
+
+#: includes/admin/settings/settings-newsletters.php:21
+msgid "Enabled"
+msgstr ""
+
+#: includes/admin/settings/settings-newsletters.php:22
+msgid "Newsletters"
+msgstr ""
+
+#: includes/admin/settings/v2.0.20/class-mailpoet-woocommerce-admin-settings.php:116
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: mailpoet-woocommerce-addon.php:207 mailpoet-woocommerce-addon.php:212
+msgid "Settings"
+msgstr ""
+
+#: mailpoet-woocommerce-addon.php:260
+#, php-format
+msgid "Sorry, <strong>%s</strong> requires WordPress "
+msgstr ""
+
+#: mailpoet-woocommerce-addon.php:271
+#, php-format
+msgid ""
+"Sorry, <strong>%s</strong> requires WooCommerce to be installed and "
+"activated first. Please <a href=\"%s\">install WooCommerce</a> first."
+msgstr ""
+
+#: mailpoet-woocommerce-addon.php:282
+#, php-format
+msgid "Sorry, <strong>%s</strong> requires WooCommerce "
 msgstr ""

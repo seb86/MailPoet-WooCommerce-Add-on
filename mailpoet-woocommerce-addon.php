@@ -1,235 +1,394 @@
 <?php
 /*
-Plugin Name: MailPoet WooCommerce Add-on
-Plugin URI: http://www.mailpoet.com
-Description: Adds a checkbox for your customers to subscribe to your MailPoet newsletters during checkout.
-Version: 1.0.2
-Author: Sebs Studio
-Author URI: http://www.sebs-studio.com
-Author Email: sebastien@sebs-studio.com
-Requires at least: 3.5.1
-Tested up to: 3.8
-
-License:
-
-  Copyright 2013 Sebs Studio (sebastien@sebs-studio.com)
-
-  This program is free software; you can redistribute it and/or modify
-  it under the terms of the GNU General Public License, version 2, as 
-  published by the Free Software Foundation.
-
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-
-  You should have received a copy of the GNU General Public License
-  along with this program; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-  
-*/
+ * Plugin Name: MailPoet WooCommerce Add-on
+ * Plugin URI: http://www.mailpoet.com
+ * Description: Adds a checkbox for your customers to subscribe to your MailPoet newsletters during checkout.
+ * Version: 2.0.0
+ * Author: Sebs Studio
+ * Author URI: http://www.sebs-studio.com
+ * Author Email: sebastien@sebs-studio.com
+ * Requires at least: 3.7.1
+ * Tested up to: 3.8.1
+ *
+ * Text Domain: mailpoet_woocommerce
+ * Domain Path: /languages/
+ * Network: false
+ *
+ * Copyright: (c) 2014 Sebs Studio. (sebastien@sebs-studio.com)
+ *
+ * License: GNU General Public License v3.0
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * @package MailPoet_WooCommerce_Add_on
+ * @author Sebs Studio
+ * @category Core
+ */
 
 if(!defined('ABSPATH')) exit; // Exit if accessed directly
 
-class MailPoet_WooCommerce_Add_on {
+/**
+ * Main MailPoet WooCommerce Add-on Class
+ *
+ * @class MailPoet_WooCommerce_Add_on
+ * @version 2.0.0
+ */
+final class MailPoet_WooCommerce_Add_on {
 
-	/*--------------------------------------------*
+	/**
 	 * Constants
-	 *--------------------------------------------*/
-	const name = 'MailPoet WooCommerce Add-on';
+	 */
+
+	// Slug
 	const slug = 'mailpoet_woocommerce_add_on';
+
+	// Text Domain
+	const text_domain = 'mailpoet_woocommerce';
+
+	// Name
+	const name = 'MailPoet WooCommerce Add-on';
+
+	/**
+	 * Global Variables
+	 */
+
+	/**
+	 * The Plug-in name.
+	 *
+	 * @var string
+	 */
+	public $name = "MailPoet WooCommerce Add-on";
+
+	/**
+	 * The Plug-in version.
+	 *
+	 * @var string
+	 */
+	public $version = "2.0.0";
+
+	/**
+	 * The WordPress version the plugin requires minimum.
+	 *
+	 * @var string
+	 */
+	public $wp_version_min = "3.7.1";
+
+	/**
+	 * The WooCommerce version this extension requires minimum.
+	 *
+	 * @var string
+	 */
+	public $woo_version_min = "2.0.20";
+
+	/**
+	 * The single instance of the class
+	 *
+	 * @var MailPoet WooCommerce Add-on
+	 */
+	protected static $_instance = null;
+
+	/**
+	 * The Plug-in URL.
+	 *
+	 * @var string
+	 */
+	public $web_url = "http://www.mailpoet.com/";
+
+	/**
+	 * The Plug-in documentation URL.
+	 *
+	 * @var string
+	 */
+	public $doc_url = "https://github.com/seb86/MailPoet-WooCommerce-Add-on/wiki/";
+
+	/**
+	 * The WordPress Plug-in URL.
+	 *
+	 * @var string
+	 */
+	public $wp_plugin_url = "http://wordpress.org/plugins/mailpoet-woocommerce-add-on";
+
+	/**
+	 * The WordPress Plug-in Support URL.
+	 *
+	 * @var string
+	 */
+	public $wp_plugin_support_url = "http://wordpress.org/support/plugin/mailpoet-woocommerce-add-on";
+
+	/**
+	 * GitHub Username
+	 *
+	 * @var string
+	 */
+	public $github_username = "seb86";
+
+	/**
+	 * GitHub Repo URL
+	 *
+	 * @var string
+	 */
+	public $github_repo_url = "https://github.com/username/MailPoet-WooCommerce-Add-on/";
+
+	/**
+	 * The Plug-in manage woocommerce.
+	 *
+	 * @var string
+	 */
+	public $manage_plugin = "manage_woocommerce";
+
+	/**
+	 * Main MailPoet WooCommerce Add-on Instance
+	 *
+	 * Ensures only one instance of MailPoet WooCommerce Add-on is loaded or can be loaded.
+	 *
+	 * @access public static
+	 * @see MailPoet_WooCommerce_Add_on()
+	 * @return MailPoet WooCommerce Add-on - Main instance
+	 */
+	public static function instance() {
+		if ( is_null( self::$_instance ) ) {
+			self::$_instance = new self();
+		}
+		return self::$_instance;
+	}
 
 	/**
 	 * Constructor
 	 */
 	public function __construct(){
-		// Register an activation hook for the plugin
-		register_activation_hook(__FILE__, array(&$this, 'install_mailpoet_woocommerce_add_on'));
+		// Define constants
+		$this->define_constants();
 
-		// Hook up to the init action
-		add_action('init', array(&$this, 'init_mailpoet_woocommerce_add_on'));
+		// Check plugin requirements
+		$this->check_requirements();
+
+		// Include required files
+		$this->includes();
+
+		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( &$this, 'action_links' ) );
+		add_action( 'init', array( &$this, 'init_mailpoet_woocommerce_add_on' ), 0 );
 	}
 
 	/**
-	 * Runs when the plugin is activated.
+	 * Define Constants
+	 *
+	 * @access private
 	 */
-	function install_mailpoet_woocommerce_add_on(){
-		add_option('mailpoet_woocommerce_enable_checkout', 0);
-		add_option('mailpoet_woocommerce_checkout_label', __('Yes, add me to your mailing list', 'mailpoet_woocommerce'));
+	private function define_constants() {
+		define( 'MAILPOET_WOOCOMMERCE', $this->name );
+		define( 'MAILPOET_WOOCOMMERCE_FILE', __FILE__ );
+		define( 'MAILPOET_WOOCOMMERCE_VERSION', $this->version );
+		define( 'MAILPOET_WOOCOMMERCE_WP_VERSION_REQUIRE', $this->wp_version_min );
+		define( 'MAILPOET_WOOCOMMERCE_WOO_VERSION_REQUIRE', $this->woo_version_min );
+		define( 'MAILPOET_WOOCOMMERCE_PAGE', str_replace('_', '-', self::slug) );
+		define( 'MAILPOET_WOOCOMMERCE_TEXT_DOMAIN', str_replace('_', '-', self::slug) );
+
+		define( 'MAILPOET_WOOCOMMERCE_README_FILE', 'http://plugins.svn.wordpress.org/mailpoet-woocommerce-add-on/trunk/readme.txt' );
+
+		define( 'GITHUB_USERNAME', $this->github_username );
+		define( 'GITHUB_REPO_URL' , str_replace( 'username', GITHUB_USERNAME, $this->github_repo_url ) );
+
+		$woo_version_installed = get_option('woocommerce_version');
+		define( 'MAILPOET_WOOVERSION', $woo_version_installed );
 	}
 
 	/**
-	 * Runs when the plugin is initialized.
-	 */
-	public function init_mailpoet_woocommerce_add_on(){
-		// Setup localization
-		load_plugin_textdomain(self::slug, false, dirname(plugin_basename(__FILE__)).'/languages');
-
-		if(is_admin()){
-			add_filter('woocommerce_settings_tabs_array', array(&$this, 'add_settings_tab'));
-			add_action('woocommerce_settings_tabs_mailpoet', array(&$this, 'mailpoet_newsletter_admin_settings'));
-
-			// Save admin settings for each section.
-			$sections = array('general', 'newsletters');
-			foreach($sections as $section){
-				add_action('woocommerce_update_options_mailpoet_'.$section, array(&$this, 'save_mailpoet_newsletter_admin_settings'));
-			}
-		}
-		else{
-			// hook into checkout page
-			add_action('woocommerce_after_order_notes', array(&$this, 'on_checkout_page'));
-		}
-		// hook into order processing
-		add_action('woocommerce_checkout_process', array(&$this, 'on_process_order'));
-	}
-
-	/**
-	 * Add a tab to the settings page of WooCommerce for MailPoet.
+	 * Plugin action links.
 	 *
 	 * @access public
+	 * @param mixed $links
+	 * @param string $file plugin file path and name being processed
 	 * @return void
 	 */
-	public function add_settings_tab($tabs){
-
-		$tabs['mailpoet'] = __('MailPoet', 'mailpoet_woocommerce');
-
-		return $tabs;
-	}
-
-	/**
-	 * MailPoet settings page.
-	 *
-	 * Handles the display of the main woocommerce 
-	 * settings page in admin.
-	 *
-	 * @access public
-	 * @return void
-	 */
-	function mailpoet_newsletter_admin_settings(){
-		global $woocommerce, $woocommerce_settings, $current_section, $current_tab;
-
-		if(!current_user_can('manage_options')){
-			wp_die(__('You do not have sufficient permissions to access this page.'));
-		}
-
-		do_action('woocommerce_mailpoet_settings_start');
-
-		include(dirname(__FILE__).'/include/settings.php');
-
-		// Get current section
-		$current_section = (empty($_REQUEST['section'])) ? 'general' : sanitize_text_field(urldecode($_REQUEST['section']));
-		$current = $current_section ? '' : ' class="current"';
-
-		// Creates each settings section.
-		$mailpoet_settings = apply_filters('woocommerce_mailpoet_settings_sections', array(
-								'general' => __('General', 'mailpoet_woocommerce'),
-								'newsletters' => __('Newsletters', 'mailpoet_woocommerce'),
-							));
-
-		foreach($mailpoet_settings as $settings => $settings_title){
-			$title = ucwords($settings_title);
-			$current = $settings == $current_section ? ' class="current"' : '';
-			$links[] = '<a href="'.add_query_arg('section', $settings, admin_url('admin.php?page=woocommerce_settings&tab=mailpoet')).'"'.$current.'>'.esc_html($title).'</a>';
-		}
-
-		echo '<ul class="subsubsub"><li>'.implode('| </li><li>', $links).'</li></ul><br class="clear" />';
-
-		// Load the current section settings
-		woocommerce_admin_fields($woocommerce_settings['mailpoet_'.$current_section]);
-
-		if($current_section == 'newsletters'){
-			include_once(dirname(__FILE__).'/include/settings-newsletters.php');
-
-			$mailpoet_list = $this->mailpoet_lists();
-
-			do_action('woocommerce_mailpoet_list_newsletters', $mailpoet_list);
-		}
-	}
-
-	// Saves the settings for MailPoet Newsletter.
-	public function save_mailpoet_newsletter_admin_settings(){
-		global $woocommerce, $woocommerce_settings, $current_section;
-
-		include(dirname(__FILE__).'/include/settings.php');
-		include_once($woocommerce->plugin_path.'/admin/settings/settings-save.php');
-
-		$current_section = (empty($_REQUEST['section'])) ? 'general' : sanitize_text_field(urldecode($_REQUEST['section']));
-
-		woocommerce_update_options($woocommerce_settings['mailpoet_'.$current_section]);
-
-		if($current_section == 'newsletters'){
-			// Each list of newsletters that have been ticked will be saved.
-			if(isset($_POST['checkout_lists'])){
-				$checkout_lists = $_POST['checkout_lists'];
-				$lists = $checkout_lists;
-				update_option('mailpoet_woocommerce_subscribe_too', $lists);
+	public function action_links( $links ) {
+		// List your action links
+		if( current_user_can( $this->manage_plugin ) ) {
+			if(version_compare(MAILPOET_WOOVERSION, "2.0.20", '<=')){
+				$plugin_links = array(
+					'<a href="' . admin_url( 'admin.php?page=woocommerce_settings&tab=' . MAILPOET_WOOCOMMERCE_PAGE ) . '">' . __( 'Settings', MAILPOET_WOOCOMMERCE_TEXT_DOMAIN ) . '</a>',
+				);
 			}
 			else{
-				delete_option('mailpoet_woocommerce_subscribe_too', $lists);
+				$plugin_links = array(
+					'<a href="' . admin_url( 'admin.php?page=wc-settings&tab=' . MAILPOET_WOOCOMMERCE_PAGE ) . '">' . __( 'Settings', MAILPOET_WOOCOMMERCE_TEXT_DOMAIN ) . '</a>',
+				);
 			}
 		}
-	}
 
-	// Get all mailpoet lists.
-	public function mailpoet_lists(){
-		// This will return an array of results with the name and list_id of each mailing list
-		$model_list = WYSIJA::get('list','model');
-		$mailpoet_lists = $model_list->get(array('name','list_id'), array('is_enabled' => 1));
-
-		return $mailpoet_lists;
+		return array_merge( $links, $plugin_links );
 	}
 
 	/**
-	 * This displays a checkbox field on the checkout 
-	 * page to allow the customer to subscribe to newsletters.
+	 * Checks that the WordPress setup meets the plugin requirements.
+	 *
+	 * @access private
+	 * @global string $wp_version
+	 * @return boolean
 	 */
-	function on_checkout_page($checkout){
-		// Checks if subscribe on checkout is enabled.
-		$enable_checkout = get_option('mailpoet_woocommerce_enable_checkout');
-		$checkout_label = get_option('mailpoet_woocommerce_checkout_label');
+	private function check_requirements() {
+		global $wp_version, $woocommerce;
 
-		if($enable_checkout == 'yes'){
-			echo '<div id="mailpoet_checkout_field">';
-			//echo apply_filters('mailpoet_woocommerce_subscribe_checkout_title', '<h3>'.__('Subscribe to Newsletter', 'mailpoet_woocommerce').'</h3>');
-			woocommerce_form_field('mailpoet_checkout_subscribe', array( 
-				'type' 			=> 'checkbox', 
-				'class' 		=> array('mailpoet-checkout-class form-row-wide'), 
-				'label' 		=> htmlspecialchars(stripslashes($checkout_label)), 
-			), $checkout->get_value('mailpoet_checkout_subscribe'));
-			echo '</div>';
+		require_once(ABSPATH.'/wp-admin/includes/plugin.php');
+
+		if (!version_compare($wp_version, MAILPOET_WOOCOMMERCE_WP_VERSION_REQUIRE, '>=')) {
+			add_action('admin_notices', array( &$this, 'display_req_notice' ) );
+			return false;
+		}
+
+		if( function_exists( 'is_plugin_active' ) ) {
+			if ( !is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+				add_action('admin_notices', array( &$this, 'display_req_woo_not_active_notice' ) );
+				return false;
+			}
+			else{
+				if( version_compare(MAILPOET_WOOVERSION, MAILPOET_WOOCOMMERCE_WOO_VERSION_REQUIRE, '<' ) ) {
+					add_action('admin_notices', array( &$this, 'display_req_woo_notice' ) );
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Display the WordPress requirement notice.
+	 *
+	 * @access static
+	 */
+	static function display_req_notice() {
+		echo '<div id="message" class="error"><p>';
+		echo sprintf( __('Sorry, <strong>%s</strong> requires WordPress ' . MAILPOET_WOOCOMMERCE_WP_VERSION_REQUIRE . ' or higher. Please upgrade your WordPress setup', MAILPOET_WOOCOMMERCE_TEXT_DOMAIN), MAILPOET_WOOCOMMERCE );
+		echo '</p></div>';
+	}
+
+	/**
+	 * Display the WooCommerce requirement notice.
+	 *
+	 * @access static
+	 */
+	static function display_req_woo_not_active_notice() {
+		echo '<div id="message" class="error"><p>';
+		echo sprintf( __('Sorry, <strong>%s</strong> requires WooCommerce to be installed and activated first. Please <a href="%s">install WooCommerce</a> first.', MAILPOET_WOOCOMMERCE_TEXT_DOMAIN), MAILPOET_WOOCOMMERCE, admin_url('plugin-install.php?tab=search&type=term&s=WooCommerce') );
+		echo '</p></div>';
+	}
+
+	/**
+	 * Display the WooCommerce requirement notice.
+	 *
+	 * @access static
+	 */
+	static function display_req_woo_notice() {
+		echo '<div id="message" class="error"><p>';
+		echo sprintf( __('Sorry, <strong>%s</strong> requires WooCommerce ' . MAILPOET_WOOCOMMERCE_WOO_VERSION_REQUIRE . ' or higher. Please update WooCommerce for %s to work.', MAILPOET_WOOCOMMERCE_TEXT_DOMAIN), MAILPOET_WOOCOMMERCE, MAILPOET_WOOCOMMERCE );
+		echo '</p></div>';
+	}
+
+	/**
+	 * Include required core files used in admin and on the frontend.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function includes() {
+		include_once( 'includes/mailpoet-woocommerce-core-functions.php' ); // Contains core functions for the front/back end.
+		include_once( 'includes/mailpoet-woocommerce-hooks.php' ); // Hooks used at the frontend.
+
+		if ( is_admin() ) {
+			$this->admin_includes();
 		}
 	}
 
 	/**
-	 * This process the customers subscription if any 
-	 * to the newsletters along with their order.
+	 * Include required admin files.
+	 *
+	 * @access public
+	 * @return void
 	 */
-	function on_process_order(){
-		global $woocommerce;
-
-		$mailpoet_checkout_subscribe = isset($_POST['mailpoet_checkout_subscribe']) ? 1 : 0;
-
-		// If the check box has been ticked then the customer is added to the MailPoet lists enabled.
-		if($mailpoet_checkout_subscribe == 1){
-			$checkout_lists = get_option('mailpoet_woocommerce_subscribe_too');
-
-			$user_data = array(
-				'email' 	=> $_POST['billing_email'],
-				'firstname' => $_POST['billing_first_name'],
-				'lastname' 	=> $_POST['billing_last_name']
-			);
-
-			$data_subscriber = array(
-				'user' 		=> $user_data,
-				'user_list' => array('list_ids' => array($checkout_lists))
-			);
-
-			$userHelper = &WYSIJA::get('user','helper');
-			$userHelper->addSubscriber($data_subscriber);
+	public function admin_includes() {
+		// Load WooCommerce class if they exist.
+		if( version_compare(MAILPOET_WOOVERSION, '2.0.20', '>' ) ) {
+			// Include the settings page to add our own settings.
+			include_once( $this->wc_plugin_path() . 'includes/admin/settings/class-wc-settings-page.php' );
+			$this->wc_settings_page = new WC_Settings_Page(); // Call the settings page for WooCommerce.
 		}
-	} // on_process_order()
+
+		include_once( 'includes/admin/class-mailpoet-woocommerce-install.php' ); // Install plugin
+		include_once( 'includes/admin/class-mailpoet-woocommerce-admin.php' ); // Admin section
+	}
+	/**
+	 * Runs when the plugin is initialized.
+	 *
+	 * @access public
+	 */
+	public function init_mailpoet_woocommerce_add_on() {
+		// Set up localisation
+		$this->load_plugin_textdomain();
+	}
+
+	/**
+	 * Load Localisation files.
+	 *
+	 * Note: the first-loaded translation file overrides any 
+	 * following ones if the same translation is present.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function load_plugin_textdomain() {
+		$locale = apply_filters( 'plugin_locale', get_locale(), self::text_domain );
+
+		load_textdomain( self::text_domain, WP_LANG_DIR . "/".self::slug."/" . $locale . ".mo" );
+
+		// Set Plugin Languages Directory
+		// Plugin translations can be filed in the mailpoet_woocommerce/languages/ directory
+		// Wordpress translations can be filed in the wp-content/languages/ directory
+		load_plugin_textdomain( self::text_domain, false, dirname( plugin_basename( __FILE__ ) ) . "/languages" );
+	}
+
+	/** Helper functions ******************************************************/
+
+	/**
+	 * Get the plugin url.
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function plugin_url() {
+		return untrailingslashit( plugins_url( '/', __FILE__ ) );
+	}
+
+	/**
+	 * Get the plugin path.
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function plugin_path() {
+		return untrailingslashit( plugin_dir_path( __FILE__ ) );
+	}
+
+	/**
+	 * Get the plugin path for WooCommerce.
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function wc_plugin_path() {
+		return untrailingslashit( plugin_dir_path( plugin_dir_path( __FILE__ ) ) ) . '/woocommerce/';
+	}
 
 } // end class
-new MailPoet_WooCommerce_Add_on();
+
+/**
+ * Returns the main instance of MailPoet_WooCommerce_Add_on to prevent the need to use globals.
+ *
+ * @return MailPoet WooCommerce Add-on
+ */
+function MailPoet_WooCommerce_Add_on() {
+	return MailPoet_WooCommerce_Add_on::instance();
+}
+
+// Global for backwards compatibility.
+$GLOBALS['mailpoet_woocommerce_add_on'] = MailPoet_WooCommerce_Add_on();
 
 ?>

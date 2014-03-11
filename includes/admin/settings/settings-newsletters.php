@@ -1,12 +1,12 @@
 <?php
 /**
- * Lists all newsletters created in MailPoet
+ * Displays a table listing all lists created in MailPoet.
  */
 
 if(!defined('ABSPATH')) exit; // Exit if accessed directly.
 
 /**
- * Output the list of newsletters.
+ * Output the table list.
  *
  * @access public
  * @return void
@@ -18,8 +18,8 @@ function woocommerce_mailpoet_list_subscription_newsletters($mailpoet_list){
 			<table class="mailpoet widefat" cellspacing="0">
 				<thead>
 					<tr>
-						<th width="1%"><?php _e('Enabled', 'mailpoet_woocommerce'); ?></th>
-						<th><?php _e('Newsletters', 'mailpoet_woocommerce'); ?></th>
+						<th width="1%"><?php _e('Enabled', MAILPOET_WOOCOMMERCE_TEXT_DOMAIN); ?></th>
+						<th><?php _e('Newsletters', MAILPOET_WOOCOMMERCE_TEXT_DOMAIN); ?></th>
 					</tr>
 				</thead>
 				<tbody>
