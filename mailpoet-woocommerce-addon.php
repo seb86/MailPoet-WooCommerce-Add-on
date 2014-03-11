@@ -291,14 +291,11 @@ final class MailPoet_WooCommerce_Add_on {
 	 */
 	public function includes() {
 		include_once( 'includes/mailpoet-woocommerce-core-functions.php' ); // Contains core functions for the front/back end.
+		include_once( 'includes/mailpoet-woocommerce-hooks.php' ); // Hooks used at the frontend.
 
 		if ( is_admin() ) {
 			$this->admin_includes();
 		}
-		else{
-			include_once( 'includes/mailpoet-woocommerce-hooks.php' ); // Hooks used at the frontend.
-		}
-
 	}
 
 	/**

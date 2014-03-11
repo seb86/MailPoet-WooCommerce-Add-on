@@ -62,7 +62,7 @@ function on_process_order( ) {
 
 		$data_subscriber = array(
 			'user' 		=> $user_data,
-			'user_list' => array('list_ids' => array($checkout_lists))
+			'user_list' => array('list_ids' => $checkout_lists )
 		);
 
 		$userHelper = &WYSIJA::get('user','helper');
