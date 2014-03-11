@@ -1,7 +1,7 @@
 === MailPoet WooCommerce Add-on ===
 Contributors: wysija, sebd86
 Tags: mailpoet, wysija, woocommerce, sebs studio, extension, add-on
-Requires at least: 3.5.1
+Requires at least: 3.7.1
 Tested up to: 3.8
 Stable tag: trunk
 License: GPLv2 or later
@@ -62,13 +62,13 @@ The manual installation method involves downloading my plugin and uploading it t
 
 = Setting up the Plugin =
 
-Simply config this plugin under WooCommerce settings in the MailPoet tab. The settings are in two sections. 'General | Newsletters'
+Simply config this plugin under WooCommerce settings in the MailPoet tab. The settings are in two sections. 'General | Lists'
 
 Under 'General' simply enable the checkbox field to show on the checkout page.
 
 You can also change the label of the checkbox. Default 'Yes, add me to your mailing list'
 
-Next is 'Newsletters'. Each list you created in MailPoet that you have enabled to send to is listed here. Simply tick the checkbox next to the Newsletter list your customers will be subscribed to and press 'Save Changes'.
+Next is 'Lists'. Each list you created in MailPoet that you have enabled to send to is listed here. Simply tick the checkbox next to the list your customers will be subscribed to and press 'Save Changes'.
 
 That's it, now when your customers tick the subscribe button on the checkout page, they will be subscribed to the newsletters you selected when processing an order.
 
@@ -88,6 +88,13 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 No, we haven't designed the plugin to give the shop manager that option. The checkbox field is after the billing and shipping fields near the submit button.
 
 == Changelog ==
+
+= 2.0.0 - 10/03/2014 =
+
+* Updated - Code structure.
+* Updated - POT file.
+* Updated - Read me file.
+* Now Supports - WooCommerce v2.0 and up, v2.1 and up.
 
 = 1.0.3 - 03/03/2014 =
 
@@ -111,6 +118,9 @@ No, we haven't designed the plugin to give the shop manager that option. The che
 
 == Upgrade Notice ==
 
-= 1.0.3 - 03/03/2014 =
+= 2.0.0 - 10/03/2014 =
 
-* Added - Greek, Portuguese, Russian languages.
+* Updated - Code structure.
+* Updated - POT file.
+* Updated - Read me file.
+* Now Supports - WooCommerce v2.0 and up, v2.1 and up.
