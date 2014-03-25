@@ -1,12 +1,11 @@
 <?php
 /**
- * Add some content to the help tab.
+ * This provides a help tab with links to documentation and the repository.
  *
  * @author 		Sebs Studio
  * @category 	Admin
  * @package 	MailPoet WooCommerce Add-on/Admin
- * @version 	1.0.0
- * @since 		2.0.0
+ * @version 	2.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -72,7 +71,7 @@ class MailPoet_WooCommerce_Admin_Help {
 
 			$screen->set_help_sidebar(
 				'<p><strong>' . __( 'For more information:', MAILPOET_WOOCOMMERCE_TEXT_DOMAIN ) . '</strong></p>' .
-				'<p><a href=" ' . MailPoet_WooCommerce_Add_on()->web_url . ' " target="_blank">' . sprintf( __( 'MailPoet', MAILPOET_WOOCOMMERCE_TEXT_DOMAIN ), MailPoet_WooCommerce_Add_on()->name ) . '</a></p>' .
+				'<p><a href=" ' . MailPoet_WooCommerce_Add_on()->web_url . ' " target="_blank">' . sprintf( 'MailPoet', MailPoet_WooCommerce_Add_on()->name ) . '</a></p>' .
 				'<p><a href=" ' . MailPoet_WooCommerce_Add_on()->wp_plugin_url . ' " target="_blank">' . __( 'Project on WordPress.org', MAILPOET_WOOCOMMERCE_TEXT_DOMAIN ) . '</a></p>' .
 				'<p><a href="' . GITHUB_REPO_URL . '" target="_blank">' . __( 'Project on Github', MAILPOET_WOOCOMMERCE_TEXT_DOMAIN ) . '</a></p>'
 			);
