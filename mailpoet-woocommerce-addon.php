@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: MailPoet WooCommerce Add-on
- * Plugin URI: http://www.mailpoet.com
+ * Plugin URI: http://wordpress.org/plugins/mailpoet-woocommerce-add-on
  * Description: Adds a checkbox for your customers to subscribe to your MailPoet newsletters during checkout.
  * Version: 2.0.1
  * Author: Sebs Studio
