@@ -5,7 +5,7 @@
  * @author 		Sebs Studio
  * @category 	Core
  * @package 	MailPoet WooCommerce Add-on/Admin/Functions
- * @version 	1.0.0
+ * @version 	2.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 function mailpoet_woocommerce_get_screen_ids() {
 	$menu_name = strtolower( str_replace ( ' ', '-', MAILPOET_WOOCOMMERCE_PAGE ) );
 
-	$mailpoet_woocommerce_screen_id = strtolower( str_replace ( ' ', '-', __( 'MailPoet WooCommerce Add-on', MAILPOET_WOOCOMMERCE_TEXT_DOMAIN ) ) );
+	$mailpoet_woocommerce_screen_id = strtolower( 'MailPoet WooCommerce Add-on' );
 
 	return apply_filters( 'mailpoet_woocommerce_screen_ids', array(
 		'toplevel_page_' . $mailpoet_woocommerce_screen_id,

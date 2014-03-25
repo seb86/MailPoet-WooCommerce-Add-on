@@ -5,7 +5,7 @@
  * @author 		Sebs Studio
  * @category 	Admin
  * @package 	MailPoet WooCommerce Add-on/Admin
- * @version 	1.0.0
+ * @version 	2.0.1
  */
 
 if(!defined('ABSPATH')) exit; // Exit if accessed directly
@@ -22,7 +22,7 @@ class MailPoet_WooCommerce_Add_on_Admin_Settings {
 	 */
 	public function __construct(){
 		$this->id 		= 'mailpoet';
-		$this->label 	= __( 'MailPoet', MAILPOET_WOOCOMMERCE_TEXT_DOMAIN );
+		$this->label 	= 'MailPoet';
 
 		add_filter('woocommerce_settings_tabs_array', array( &$this, 'add_settings_tab' ) );
 		add_action('woocommerce_settings_tabs_' . $this->id, array( &$this, 'output' ) );

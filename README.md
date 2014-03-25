@@ -88,6 +88,15 @@ __Q1. Can I place the checkbox field any where else?__
 A1. No, we haven't designed the plugin to give the shop manager that option. The checkbox field is after the billing and shipping fields near the submit button.
 
 ## Changelog
+
+__2.0.1 - 25/03/2014__
+
+* Added - Arabic language.
+* CORRECTED - If function 'mailpoet_lists' is already defined, then don't load again.
+* REMOVED - Translation of the brand name 'MailPoet' only.
+* Updated - POT file.
+* Updated - Plugin Update Information filter
+
 __2.0.0 - 11/03/2014__
 
 * Updated - Code structure.
