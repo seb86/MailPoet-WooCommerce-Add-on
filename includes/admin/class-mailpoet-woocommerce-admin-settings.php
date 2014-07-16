@@ -35,7 +35,7 @@ class MailPoet_WooCommerce_Admin_Settings {
 		global $current_section, $current_tab;
 
 		if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'woocommerce-settings' ) ) {
-			die( __( 'Action failed. Please refresh the page and retry.', 'mailpoet-woocommerce-addon' ) );
+			die( __( 'Action failed. Please refresh the page and retry.', 'mailpoet_woocommerce' ) );
 		}
 
 	}
