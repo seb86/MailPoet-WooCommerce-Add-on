@@ -29,7 +29,7 @@ if(! class_exists('MailPoet_WooCommerce_Install')){
 		 */
 		public function __construct() {
 			register_activation_hook( MAILPOET_WOOCOMMERCE_FILE, array($this, 'install') );
-			add_action('admin_init', array($this, 'install'), 5);
+			//add_action('admin_init', array($this, 'install'), 5);
 		}
 
 		/**

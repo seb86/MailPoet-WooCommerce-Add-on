@@ -50,7 +50,7 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On_Settings' ) ) {
 		} // END add_mailpoet_settings_tab()
 
 		/**
-		 * Get sections
+		 * Get each section to seperate the MailPoet settings.
 		 *
 		 * @since  1.0.0
 		 * @access public
@@ -59,24 +59,21 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On_Settings' ) ) {
 		public static function get_sections() {
 			$sections = array(
 				''      => __('General', 'mailpoet-woocommerce-add-on'),
-				'lists' => __('Lists', 'mailpoet-woocommerce-add-on'),
+				'lists' => __('Available Lists', 'mailpoet-woocommerce-add-on'),
 			);
 
 			return $sections;
 		}
 
 		/**
-		 * Get settings array
+		 * Gets the settings for the add-on.
 		 *
 		 * @since  1.0.0
 		 * @access public
-		 * @global $current_section
 		 * @return array
 		 */
-		public static function get_settings() {
-			global $current_section;
-
-			if( $current_section != 'lists' ){
+		public static function get_settings( $current_section = '' ) {
+			if( empty( $current_section ) || $current_section != 'lists' ){
 
 				return array(
 
@@ -158,6 +155,35 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On_Settings' ) ) {
 		} // get_settings()
 
 		/**
+		 * Creates sections beneath the MailPoet tab.
+		 *
+		 * @since  3.0.0
+		 * @access public
+		 * @global $current_section
+		 * @uses   self::get_sections()
+		 * @uses   admin_url()
+		 */
+		public function output_sections() {
+			global $current_section;
+
+			$sections = self::get_sections();
+
+			if ( empty( $sections ) ) {
+				return;
+			}
+
+			echo '<ul class="subsubsub">';
+
+			$array_keys = array_keys( $sections );
+
+			foreach ( $sections as $id => $label ) {
+				echo '<li><a href="'.admin_url('admin.php?page=wc-settings&tab='.MAILPOET_WOOCOMMERCE_SLUG.'&section='.sanitize_title($id)).'" class="'.($current_section == $id ? 'current' : '').'">'.$label.'</a> '.( end($array_keys) == $id ? '' : '|').' </li>';
+			}
+
+			echo '</ul><br class="clear" />';
+		} // END output_sections()
+
+		/**
 		 * Output the settings
 		 *
 		 * @since   1.0.0
@@ -165,15 +191,20 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On_Settings' ) ) {
 		 * @global  $current_section
 		 * @uses    woocommerce_admin_fields()
 		 * @uses    self::get_settings()
+		 * @uses    wp_enqueue_script()
 		 * @version 3.0.0
 		 */
 		public function output() {
 			global $current_section;
 
-			woocommerce_admin_fields( self::get_settings() );
+			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
+			wp_enqueue_script( 'woocommerce_settings', WC()->plugin_url() . '/assets/js/admin/settings' . $suffix . '.js', array( 'jquery', 'jquery-ui-datepicker', 'jquery-ui-sortable', 'iris', 'select2' ), WC()->version, true );
+
+			woocommerce_admin_fields( self::get_settings( $current_section ) );
 
 			if( $current_section == 'lists' ){
-				include_once('settings-newsletters.php');
+				include_once('settings/mailpoet-lists.php');
 
 				$mailpoet_list = mailpoet_lists();
 

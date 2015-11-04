@@ -39,14 +39,16 @@ if(! class_exists('MailPoet_WooCommerce_Add_On_Admin_Notices')){
 		* @access public
 		*/
 		public function add_notices() {
-			if( in_array('mailpoet/mailpoet.php', apply_filters('active_plugins', get_option('active_plugins'))) ){
-				add_action('admin_notices', array($this, 'requirement_mailpoet_notice'));
+			if( !in_array('wysija-newsletters/index.php', apply_filters('active_plugins', get_option('active_plugins'))) ){
+				add_action('admin_notices', array($this, 'requirement_mailpoet_notice'), 10);
+				//deactivate_plugins(plugin_basename(MAILPOET_WOOCOMMERCE_FILE_));
 				return false;
 			}
 
 			if( in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins'))) ){
 				if( version_compare(WC_VERSION, MAILPOET_WOOCOMMERCE_WC_VERSION_REQUIRED, '<') ){
-					add_action('admin_notices', array($this, 'requirement_wc_notice'));
+					add_action('admin_notices', array($this, 'requirement_wc_notice'), 10);
+					//deactivate_plugins(plugin_basename(MAILPOET_WOOCOMMERCE_FILE_));
 					return false;
 				}
 			}
@@ -66,7 +68,8 @@ if(! class_exists('MailPoet_WooCommerce_Add_On_Admin_Notices')){
 			global $wp_version;
 
 			if(! version_compare($wp_version, MAILPOET_WOOCOMMERCE_WP_VERSION_REQUIRED, '>=') ){
-				add_action('admin_notices', array($this, 'requirement_wp_notice'));
+				add_action('admin_notices', array($this, 'requirement_wp_notice'), 10);
+				//deactivate_plugins(plugin_basename(MAILPOET_WOOCOMMERCE_FILE_));
 				return false;
 			}
 

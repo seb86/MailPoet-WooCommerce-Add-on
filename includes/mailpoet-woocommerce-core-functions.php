@@ -37,13 +37,10 @@ function on_checkout_page( $checkout ) {
 	// Checks if subscribe on checkout is enabled.
 	$enable_checkout  = get_option('mailpoet_woocommerce_enable_checkout');
 	$customer_selects = get_option('mailpoet_woocommerce_customer_selects');
-	$double_optin     = get_option('mailpoet_woocommerce_double_optin');
-	$checkout_label   = get_option('mailpoet_woocommerce_checkout_label');
-	if( isset( $checkout_label ) ) $checkout_label ? $checkout_label : __('Yes, add me to your mailing list.', 'mailpoet-woocommerce-add-on');
 
 	if( $enable_checkout == 'yes' ) {
 
-		echo '<div id="mailpoet_checkout_field">';
+		//echo '<div id="mailpoet_checkout_field">';
 
 		// Customer can select more than one newsletter.
 		if( $customer_selects == 'yes' ) {
@@ -68,8 +65,10 @@ function on_checkout_page( $checkout ) {
 		* newsletters the admin set in the settings.
 		*/
 		else {
-
-			$field_name = 'mailpoet_checkout_subscribe'; // Field Name
+			$checkout_label = get_option('mailpoet_woocommerce_checkout_label'); // Subscribe Checkbox Label
+			$checkout_label = !empty( $checkout_label ) ? $checkout_label : __('Yes, add me to your mailing list.', 'mailpoet-woocommerce-add-on'); // Puts default label if not set in the settings.
+			$double_optin   = get_option('mailpoet_woocommerce_double_optin'); // Double Opt-in
+			$field_name     = 'mailpoet_checkout_subscribe'; // Field Name
 
 			woocommerce_form_field($field_name, array(
 				'type'    => 'checkbox',
@@ -80,7 +79,7 @@ function on_checkout_page( $checkout ) {
 
 		} // END if $customer_selects
 
-		echo '</div>';
+		//echo '</div>';
 
 	} // END if $enabled_checkout
 } // END on_checkout_page()
