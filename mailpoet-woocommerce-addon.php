@@ -180,6 +180,7 @@ final class MailPoet_WooCommerce_Add_on {
 		if ( is_admin() ) {
 			include_once('includes/admin/class-mailpoet-woocommerce-install.php'); // Install plugin
 			include_once('includes/admin/class-mailpoet-woocommerce-admin.php'); // Admin section
+		}
 	}
 
 	/**

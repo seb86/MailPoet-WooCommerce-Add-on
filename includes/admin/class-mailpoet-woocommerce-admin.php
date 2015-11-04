@@ -24,7 +24,8 @@ if(! class_exists('MailPoet_WooCommerce_Admin')){
 		 */
 		public function __construct() {
 			add_action('init', array($this, 'includes'), 10);
-			add_filter('plugin_row_meta', array($this, 'plugin_row_meta' ), 10, 2);
+			add_filter('plugin_action_links_'.plugin_basename(MAILPOET_WOOCOMMERCE_FILE), array($this, 'action_links'));
+			add_filter('plugin_row_meta', array($this, 'plugin_row_meta'), 10, 2);
 		}
 
 		/**
@@ -57,13 +58,13 @@ if(! class_exists('MailPoet_WooCommerce_Admin')){
 		 * @return array  $input
 		 */
 		public function plugin_row_meta( $input, $file ) {
-			if( plugin_basename( MAILPOET_WOOCOMMERCE_FILE ) !== $file ) {
+			if( plugin_basename(MAILPOET_WOOCOMMERCE_FILE) !== $file) {
 				return $input;
 			}
 
 			$links = array(
-				'<a href="'.esc_url( 'https://github.com/seb86/MailPoet-WooCommerce-Add-on/wiki/' ).'" target="_blank">'.__('Documentation', 'mailpoet-woocommerce-add-on').'</a>',
-				'<a href="'.esc_url( 'https://wordpress.org/support/plugin/mailpoet-woocommerce-add-on/' ).'" target="_blank">'.__('Community Support', 'mailpoet-woocommerce-add-on').'</a>'
+				'<a href="'.esc_url('https://github.com/seb86/MailPoet-WooCommerce-Add-on/wiki/').'" target="_blank">'.__('Documentation', 'mailpoet-woocommerce-add-on').'</a>',
+				'<a href="'.esc_url('https://wordpress.org/support/plugin/mailpoet-woocommerce-add-on/').'" target="_blank">'.__('Community Support', 'mailpoet-woocommerce-add-on').'</a>'
 			);
 
 			$input = array_merge( $input, $links );
@@ -75,7 +76,7 @@ if(! class_exists('MailPoet_WooCommerce_Admin')){
 		 * Include any classes we need within admin.
 		 */
 		public function includes() {
-			include('mailpoet-woocommerce-admin-functions.php');
+			//include('mailpoet-woocommerce-admin-functions.php');
 			include('class-mailpoet-woocommerce-admin-notices.php');
 		} // END includes()
 
