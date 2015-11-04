@@ -1,51 +1,221 @@
 <?php
 /**
- * MailPoet WooCommerce Add-on Admin Settings Class.
+ * MailPoet WooCommerce Add-on Settings
  *
- * @since    1.0.0
  * @author   Sébastien Dumont
  * @category Admin
- * @package  MailPoet WooCommerce Add-on/Admin
- * @license  GPL-2.0+
+ * @package  MailPoet WooCommerce Add-on
+ * @version  3.0.0
  */
 
 if(! defined('ABSPATH')) exit; // Exit if accessed directly
 
-if( !class_exists('MailPoet_WooCommerce_Admin_Settings')) {
+if ( ! class_exists( 'MailPoet_WooCommerce_Add_On_Settings' ) ) {
 
 	/**
-	 * MailPoet_WooCommerce_Admin_Settings
+	 * MailPoet_WooCommerce_Settings
 	 */
-	class MailPoet_WooCommerce_Admin_Settings {
-
-		private static $settings = array();
+	class MailPoet_WooCommerce_Add_On_Settings {
 
 		/**
-		 * Include the settings page classes
+		 * Constructor.
 		 *
 		 * @since  1.0.0
-		 * @access public static
+		 * @access public
 		 */
-		public static function get_settings_pages( ) {
-			$settings[] = include( 'settings/class-mailpoet-woocommerce-settings.php' );
+		public function __construct() {
+			add_filter('woocommerce_settings_submenu_array', array($this, 'add_menu_page'), 30);
 
-			return $settings;
+			add_filter('woocommerce_settings_tabs_array', array($this, 'add_mailpoet_settings_tab'), 30);
+
+			add_action('woocommerce_sections_' . MAILPOET_WOOCOMMERCE_SLUG, array($this, 'output_sections') );
+
+			add_action('woocommerce_settings_' . MAILPOET_WOOCOMMERCE_SLUG, array($this, 'output') );
+
+			add_action('woocommerce_settings_save_' . MAILPOET_WOOCOMMERCE_SLUG, array($this, 'save') );
 		}
 
 		/**
-		 * Save the settings
+		 * Add the MailPoet settings tab to the WooCommerce settings tabs array.
+		 *
+		 * @since  3.0.0
+		 * @access public
+		 * @param  array $settings_tabs Array of WooCommerce setting tabs & their labels, excluding the MailPoet tab.
+		 * @return array $settings_tabs Array of WooCommerce setting tabs & their labels, including the MailPoet tab.
+		 */
+		public static function add_mailpoet_settings_tab( $settings_tabs ) {
+			$settings_tabs[ 'mailpoet-woocommerce-add-on'] = 'MailPoet';
+
+			return $settings_tabs;
+		} // END add_mailpoet_settings_tab()
+
+		/**
+		 * Get sections
 		 *
 		 * @since  1.0.0
-		 * @access public static
+		 * @access public
+		 * @return array
 		 */
-		 public static function save() {
-			 global $current_section, $current_tab;
+		public static function get_sections() {
+			$sections = array(
+				''      => __('General', 'mailpoet-woocommerce-add-on'),
+				'lists' => __('Lists', 'mailpoet-woocommerce-add-on'),
+			);
 
-			 if ( empty($_REQUEST['_wpnonce']) || !wp_verify_nonce($_REQUEST['_wpnonce'], 'woocommerce-settings')) {
-				 wp_die(__('Action failed. Please refresh the page and retry.', 'mailpoet-woocommerce-add-on'));
-			 }
-		 }
+			return $sections;
+		}
 
-	 } // END class
+		/**
+		 * Get settings array
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @global $current_section
+		 * @return array
+		 */
+		public static function get_settings() {
+			global $current_section;
 
-} // END if class exists.
+			if( $current_section != 'lists' ){
+
+				return array(
+
+					array(
+						'name' => __('MailPoet Newsletter', 'mailpoet-woocommerce-add-on'),
+						'type' => 'title',
+						'desc' => __('Now your customers can subscribe to newsletters you have created with MailPoet.', 'mailpoet-woocommerce-add-on'),
+						'id'   => MAILPOET_WOOCOMMERCE_SLUG . '_general_options'
+					),
+
+					array(
+						'name'    => __('Enable subscription?', 'mailpoet-woocommerce-add-on'),
+						'desc'    => __('Tick this box to enable MailPoet subscription during checkout.', 'mailpoet-woocommerce-add-on'),
+						'id'      => 'mailpoet_woocommerce_enable_checkout',
+						'type'    => 'checkbox',
+						'default' => '1',
+					),
+
+					array(
+						'title'    => __('Does the customer select?', 'mailpoet-woocommerce-add-on'),
+						'desc'     => sprintf( __('If you have more than one newsletter. It might be best to allow your customers to select which lists they wish to subscribe too. <a class="button button-primary" href="%s">Edit Lists</a>', 'mailpoet-woocommerce-add-on'), admin_url('admin.php?page=wysija_subscribers&action=lists') ),
+						'desc_tip' => false,
+						'id'       => 'mailpoet_woocommerce_customer_selects',
+						'class'    => 'chosen-select',
+						'default'  => 'no',
+						'type'     => 'select',
+						'options'  => array(
+							'no'  => __('No', 'mailpoet-woocommerce-add-on'),
+							'yes' => __('Yes', 'mailpoet-woocommerce-add-on'),
+						),
+						'autoload' => false
+					),
+
+					array(
+						'name'    => __('Double Opt-in?', 'mailpoet-woocommerce-add-on'),
+						'desc'    => __('Set the checkbox to be checked by default.', 'mailpoet-woocommerce-add-on'),
+						'id'      => 'mailpoet_woocommerce_double_optin',
+						'type'    => 'checkbox',
+						'default' => '1',
+						'class'   => 'single_list_only'
+					),
+
+					array(
+						'name'        => __('Subscribe Checkbox label', 'mailpoet-woocommerce-add-on'),
+						'desc'        => __('Enter your own label to place next to the subscription checkbox. Default: Yes, add me to your mailing list.', 'mailpoet-woocommerce-add-on'),
+						'desc_tip'    => false,
+						'id'          => 'mailpoet_woocommerce_checkout_label',
+						'css'         => 'min-width:300px;',
+						'type'        => 'text',
+						'placeholder' => __('Yes, add me to your mailing list.', 'mailpoet-woocommerce-add-on'),
+						'class'       => 'single_list_only'
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => MAILPOET_WOOCOMMERCE_SLUG . '_general_options'
+					),
+
+				); // End general settings.
+			}
+			else{
+
+				return array(
+
+					array(
+						'title' => __('Available Lists', 'mailpoet-woocommerce-add-on'),
+						'type'  => 'title',
+						'desc'  => __('Simply tick the lists you want your customers to subscribe to or allow the customer to choose from and press "Save Changes".', 'mailpoet-woocommerce-add-on'),
+						'id'    => MAILPOET_WOOCOMMERCE_SLUG . '_lists_options'
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => MAILPOET_WOOCOMMERCE_SLUG . '_lists_options'
+					),
+
+				); // End lists settings
+			}
+		} // get_settings()
+
+		/**
+		 * Output the settings
+		 *
+		 * @since   1.0.0
+		 * @access  public
+		 * @global  $current_section
+		 * @uses    woocommerce_admin_fields()
+		 * @uses    self::get_settings()
+		 * @version 3.0.0
+		 */
+		public function output() {
+			global $current_section;
+
+			woocommerce_admin_fields( self::get_settings() );
+
+			if( $current_section == 'lists' ){
+				include_once('settings-newsletters.php');
+
+				$mailpoet_list = mailpoet_lists();
+
+				do_action('woocommerce_mailpoet_list_newsletters', $mailpoet_list);
+			}
+
+			wp_nonce_field( 'mailpoet_wc_settings', '_mailpoet_wc_nonce', false );
+		} // END output()
+
+		/**
+		 * Save settings
+		 *
+		 * @since   1.0.0
+		 * @access  public
+		 * @global  $current_section
+		 * @uses    woocommerce_update_options()
+		 * @uses    self::get_settings()
+		 * @version 3.0.0
+		 */
+		public function save() {
+			global $current_section;
+
+			if ( empty( $_POST['_mailpoet_wc_nonce'] ) || ! wp_verify_nonce( $_POST['_mailpoet_wc_nonce'], 'mailpoet_wc_settings' ) ) {
+				return;
+			}
+
+			if( $current_section == 'lists' ){
+				// Each list that has been ticked will be saved.
+				if( isset($_POST['checkout_lists']) ){
+					$checkout_lists = $_POST['checkout_lists'];
+					update_option('mailpoet_woocommerce_subscribe_too', $checkout_lists);
+				}
+				else{
+					delete_option('mailpoet_woocommerce_subscribe_too');
+				}
+			} else {
+				woocommerce_update_options( self::get_settings() );
+			}
+		} // END save()
+
+	} // END class
+
+} // END if class exists
+
+return new MailPoet_WooCommerce_Add_On_Settings();

@@ -2,7 +2,7 @@
 /*
  * Plugin Name:       MailPoet WooCommerce Add-on
  * Plugin URI:        https://wordpress.org/plugins/mailpoet-woocommerce-add-on
- * Description:       Adds a checkbox on the checkout page for your customers to subscribe to your MailPoet newsletters once an order had completed.
+ * Description:       Adds a checkbox on the checkout page for your customers to subscribe to your MailPoet newsletters once an order has completed.
  * Version:           3.0.0
  * Author:            Sébastien Dumont
  * Author URI:        http://www.sebastiendumont.com
@@ -31,14 +31,14 @@
  */
 if(! defined('ABSPATH')) exit; // Exit if accessed directly
 
-if(!class_exists('MailPoet_WooCommerce_Add_on')){
+if(! class_exists('MailPoet_WooCommerce_Add_On')){
 
 /**
  * Main MailPoet WooCommerce Add-on Class
  *
  * @since 1.0.0
  */
-final class MailPoet_WooCommerce_Add_on {
+final class MailPoet_WooCommerce_Add_On {
 
 	/**
 	 * The single instance of the class
@@ -60,7 +60,7 @@ final class MailPoet_WooCommerce_Add_on {
 	 */
 	public static function instance() {
 		if(is_null(self::$_instance)){
-			self::$_instance = new MailPoet_WooCommerce_Add_on();
+			self::$_instance = new MailPoet_WooCommerce_Add_On();
 			self::$_instance->setup_constants();
 			self::$_instance->load_plugin_textdomain();
 			self::$_instance->includes();
@@ -148,9 +148,6 @@ final class MailPoet_WooCommerce_Add_on {
 
 		$this->define('MAILPOET_WOOCOMMERCE_WP_VERSION_REQUIRED', '4.0');
 		$this->define('MAILPOET_WOOCOMMERCE_WC_VERSION_REQUIRED', '2.3');
-
-		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
-		$this->define('MAILPOET_WOOCOMMERCE_SCRIPT_MODE', $suffix);
 	} // END setup_constants()
 
 	/**
@@ -221,7 +218,9 @@ final class MailPoet_WooCommerce_Add_on {
 		}
 	} // END load_plugin_textdomain()
 
-} // end class
+} // END class
+
+} // END if class exists
 
 // Run the Plugin
-return MailPoet_WooCommerce_Add_on::instance();
+return MailPoet_WooCommerce_Add_On::instance();

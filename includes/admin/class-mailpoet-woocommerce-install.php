@@ -56,15 +56,13 @@ if(! class_exists('MailPoet_WooCommerce_Install')){
 			// Include settings so that we can run through defaults.
 			include_once( 'class-mailpoet-woocommerce-admin-settings.php' );
 
-			$settings = MailPoet_WooCommerce_Admin_Settings::get_settings_pages();
+			$settings = MailPoet_WooCommerce_Add_On_Settings::get_settings();
 
 			// Run through each section and settings to load the default settings.
-			foreach ( $settings as $section ) {
-				foreach ( $section->get_settings() as $value ) {
-					if ( isset( $value['default'] ) && isset( $value['id'] ) ) {
-						$autoload = isset( $value['autoload'] ) ? (bool) $value['autoload'] : true;
-						add_option( $value['id'], $value['default'], '', ( $autoload ? 'yes' : 'no' ) );
-					}
+			foreach ( $settings as $value ) {
+				if ( isset( $value['default'] ) && isset( $value['id'] ) ) {
+					$autoload = isset( $value['autoload'] ) ? (bool) $value['autoload'] : true;
+					add_option( $value['id'], $value['default'], '', ( $autoload ? 'yes' : 'no' ) );
 				}
 			}
 		} // END create_options()

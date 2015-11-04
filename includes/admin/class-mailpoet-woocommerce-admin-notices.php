@@ -11,14 +11,14 @@
 
 if(! defined('ABSPATH')) exit; // Exit if accessed directly
 
-if(! class_exists('MailPoet_WooCommerce_Admin_Notices')){
+if(! class_exists('MailPoet_WooCommerce_Add_On_Admin_Notices')){
 
 	/**
-	 * Class - MailPoet_WooCommerce_Admin_Notices
+	 * Class - MailPoet_WooCommerce_Add_On_Admin_Notices
 	 *
 	 * @since 3.0.0
 	 */
-	class MailPoet_WooCommerce_Admin_Notices {
+	class MailPoet_WooCommerce_Add_On_Admin_Notices {
 
 		/**
 		 * Constructor
@@ -103,8 +103,8 @@ if(! class_exists('MailPoet_WooCommerce_Admin_Notices')){
 			include('views/html-notice-requirement-mailpoet.php');
 		} // END requirement_mailpoet_notice()
 
-	} // END MailPoet_WooCommerce_Admin_Notices class.
+	} // END MailPoet_WooCommerce_Add_On_Admin_Notices class.
 
 } // END if class exists.
 
-return new MailPoet_WooCommerce_Admin_Notices();
+return new MailPoet_WooCommerce_Add_On_Admin_Notices();

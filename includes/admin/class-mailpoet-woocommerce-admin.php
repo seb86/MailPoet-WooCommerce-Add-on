@@ -12,9 +12,9 @@
 
 if(! defined('ABSPATH')) exit; // Exit if accessed directly
 
-if(! class_exists('MailPoet_WooCommerce_Admin')){
+if(! class_exists('MailPoet_WooCommerce_Add_On_Admin')){
 
-	class MailPoet_WooCommerce_Admin {
+	class MailPoet_WooCommerce_Add_On_Admin {
 
 		/**
 		 * Constructor
@@ -29,6 +29,17 @@ if(! class_exists('MailPoet_WooCommerce_Admin')){
 		}
 
 		/**
+		 * Include any classes we need within admin.
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 */
+		public function includes() {
+			include('class-mailpoet-woocommerce-admin-notices.php');
+			include('class-mailpoet-woocommerce-admin-settings.php');
+		} // END includes()
+
+		/**
 		 * Plugin action links.
 		 *
 		 * @since  1.0.0
@@ -39,7 +50,7 @@ if(! class_exists('MailPoet_WooCommerce_Admin')){
 		public function action_links( $links ) {
 			if( current_user_can('manage_woocommerce') ){
 				$plugin_links = array(
-					'<a href="'.admin_url( 'admin.php?page=woocommerce_settings&tab='.MAILPOET_WOOCOMMERCE_SLUG ).'">'.__('Settings', 'mailpoet-woocommerce-add-on').'</a>',
+					'<a href="'.admin_url( 'admin.php?page=wc-settings&tab='.MAILPOET_WOOCOMMERCE_SLUG ).'">'.__('Settings', 'mailpoet-woocommerce-add-on').'</a>',
 				);
 
 				return array_merge( $plugin_links, $links );
@@ -72,16 +83,8 @@ if(! class_exists('MailPoet_WooCommerce_Admin')){
 			return $input;
 		} // END plugin_row_meta()
 
-		/**
-		 * Include any classes we need within admin.
-		 */
-		public function includes() {
-			//include('mailpoet-woocommerce-admin-functions.php');
-			include('class-mailpoet-woocommerce-admin-notices.php');
-		} // END includes()
-
 	} // END class
 
 } // END if class exists
 
-return new MailPoet_WooCommerce_Admin();
+return new MailPoet_WooCommerce_Add_On_Admin();
