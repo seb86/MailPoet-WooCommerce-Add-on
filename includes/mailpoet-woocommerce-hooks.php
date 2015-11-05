@@ -13,23 +13,8 @@
 
 if(! defined('ABSPATH')) exit; // Exit if accessed directly
 
-// hook into checkout page - adds field before billing form.
-add_action('woocommerce_before_checkout_billing_form', 'on_checkout_page');
+// Hook into the checkout page. Adds the subscription fields.
+add_action('woocommerce_'.get_option('mailpoet_woocommerce_subscription_position'), 'on_checkout_page');
 
-// hook into checkout page - adds field after billing form.
-add_action('woocommerce_after_checkout_billing_form', 'on_checkout_page');
-
-// hook into checkout page - adds field before shipping form.
-add_action('woocommerce_before_checkout_shipping_form', 'on_checkout_page');
-
-// hook into checkout page - adds field after shipping form.
-add_action('woocommerce_after_checkout_shipping_form', 'on_checkout_page');
-
-// hook into checkout page - adds field before order notes.
-add_action( 'woocommerce_before_order_notes', 'on_checkout_page' );
-
-// hook into checkout page - adds field after order notes.
-add_action( 'woocommerce_after_order_notes', 'on_checkout_page' );
-
-// hook into order processing
-add_action( 'woocommerce_checkout_process', 'on_process_order' );
+// Hook into order processing
+add_action('woocommerce_checkout_process', 'on_process_order');
