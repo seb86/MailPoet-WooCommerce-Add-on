@@ -44,14 +44,18 @@ if ( !function_exists('mailpoet_lists')) {
  * @uses    get_current_user_id()
  */
 function on_checkout_page( $checkout ) {
-	// Checks if subscribe on checkout is enabled.
 	$enable_checkout    = get_option('mailpoet_woocommerce_enable_checkout'); // Is the add-on enabled?
 	$customer_selects   = get_option('mailpoet_woocommerce_customer_selects'); // Multi-Subscriptions
 	$checkbox_status    = get_option('mailpoet_woocommerce_checkbox_status'); // Checkbox Status
 	$subscription_lists = get_option('mailpoet_woocommerce_subscribe_too'); // Subscription Lists selected
 	$field_value        = $checkbox_status == 'checked' ? 1 : 0; // Field Value
 
-	if( $enable_checkout == 'yes' ) {
+	/**
+	 * If the add-on is enabled and at least one list has been
+	 * selected. Display the subscription fields on the
+	 * checkout page.
+	 */
+	if( $enable_checkout == 'yes' && !empty($subscription_lists) ) {
 
 		// If the user is logged in and has already subscribed, don't show the subscription fields.
 		if ( is_user_logged_in() && get_user_meta( get_current_user_id(), '_mailpoet_wc_subscribed_to_newsletter', true ) ) {
@@ -115,10 +119,16 @@ function on_checkout_page( $checkout ) {
  * @since   1.0.0
  * @version 3.0.0
  * @uses    add_user_meta()
+ * @filters mailpoet_woocommerce_subscribe_confirm
+ * @filters mailpoet_woocommerce_subscribe_thank_you
  */
 function on_process_order(){
-	$mailpoet_checkout_subscribe    = isset( $_POST['mailpoet_checkout_subscribe'] ) ? 1 : 0;
-	$mailpoet_checkout_subscription = $_POST['mailpoet_checkout_subscription'];
+	$mailpoet_checkout_subscribe = isset( $_POST['mailpoet_checkout_subscribe'] ) ? 1 : 0;
+
+	$customer_selects = get_option('mailpoet_woocommerce_customer_selects'); // Multi-Subscriptions
+	if( $customer_selects == 'yes' ) {
+		$mailpoet_checkout_subscriptions = $_POST['mailpoet_checkout_subscription'];
+	}
 
 	$subscribe_customer = false;
 
@@ -129,25 +139,116 @@ function on_process_order(){
 	}
 
 	// If the customer selected one or more lists, then the customer is added to those MailPoet lists only.
-	if( isset($mailpoet_checkout_subscription) && is_array($mailpoet_checkout_subscription)) {
-		$subscription_lists = $mailpoet_checkout_subscription;
+	if( isset($mailpoet_checkout_subscriptions) && is_array($mailpoet_checkout_subscriptions)) {
+		$subscription_lists = $mailpoet_checkout_subscriptions; //
 		$subscribe_customer = true;
-
-		$user_data = array(
-			'email'     => $_POST['billing_email'],
-			'firstname' => $_POST['billing_first_name'],
-			'lastname'  => $_POST['billing_last_name']
-		);
-
-		$data_subscriber = array(
-			'user'      => $user_data,
-			'user_list' => array('list_ids' => $subscription_lists)
-		);
-
-		$userHelper = &WYSIJA::get('user','helper');
-		$userHelper->addSubscriber($data_subscriber);
-
-		// Now that the user has subscribed, lets update the customers profile so we don't forget.
-		add_user_meta( get_current_user_id(), '_mailpoet_wc_subscribed_to_newsletter', true );
 	}
+
+	// If all is good to subscribe the customer, then we continue. Otherwise ignore the rest.
+	if( $subscribe_customer !== true ) return false;
+
+	$user_data = array(
+		'email'     => $_POST['billing_email'],
+		'firstname' => $_POST['billing_first_name'],
+		'lastname'  => $_POST['billing_last_name']
+	);
+
+	$data_subscriber = array(
+		'user'      => $user_data,
+		'user_list' => array('list_ids' => $subscription_lists)
+	);
+
+	$user_helper = WYSIJA::get('user','helper');
+	$user_helper->addSubscriber($data_subscriber);
+
+	// Double Opt-in Option
+	$double_optin = get_option('mailpoet_woocommerce_double_optin');
+	if ( isset( $double_optin ) && $double_optin == 'yes' ) {
+		$user_model = WYSIJA::get('user', 'model');
+		$subscriber_id = $user_model->getOne(false, array(
+			'email' => trim( $user_data['email'] )
+		) );
+
+		// Send confirmation email.
+		mailpoet_wc_send_confirmation_email($subscriber_id, $subscription_lists);
+
+		// Display a notice to the customer.
+		wc_add_notice( apply_filters( 'mailpoet_woocommerce_subscribe_confirm', __( 'We have sent you an email to confirm your newsletter subscription. Please confirm your subscription. Thank you.', 'mailpoet-woocommerce-add-on' ) ) );
+	} else {
+		// Display a notice to the customer.
+		wc_add_notice( apply_filters( 'mailpoet_woocommerce_subscribe_thank_you', __( 'Thank you for subscribing to our newsletter/s.', 'mailpoet-woocommerce-add-on' ) ) );
+	}
+
+	// Now that the user has subscribed, lets update the customers profile so we don't forget.
+	add_user_meta( get_current_user_id(), '_mailpoet_wc_subscribed_to_newsletter', true );
 } // on_process_order()
+
+/**
+ * Send a confirmation email if double opt-in was enabled.
+ *
+ * @since  3.0.0
+ * @param  type $user_id
+ * @param  type $listids
+ * @return boolean
+ */
+function mailpoet_wc_send_confirmation_email($user_id, $listids = array()){
+	// Convert user id into an array for MailPoet.
+	if ( !is_array($user_id)) {
+		$user_id = (array) $user_id;
+	}
+
+	/* Get users objects */
+	$modelU = WYSIJA::get('user', 'model');
+	$modelU->getFormat = OBJECT_K;
+	$users = $modelU->get(false, array('equal' => array('user_id' => $user_id, 'status' => 0)));
+
+	$config = WYSIJA::get('config', 'model');
+	$mailer = WYSIJA::get('mailer', 'helper');
+
+	// Check if the selected lists exists before sending any confirmation email.
+	if ($listids) {
+		$mailer->listids = $listids;
+		$mList = WYSIJA::get('list', 'model');
+		$listnamesarray = $mList->get(array('name'), array('list_id' => $listids));
+		$arrayNames = array();
+		foreach ($listnamesarray as $detailname) {
+			$arrayNames[] = $detailname['name'];
+		}
+		$mailer->listnames = $arrayNames;
+	}
+
+	// load confirmation email and if it doesn't exist, create a new one.
+	$mEmail = WYSIJA::get('email', 'model');
+	$mEmail->getFormat = OBJECT;
+	$email_confirmation_data = $mEmail->getOne(false, array('email_id' => $config->getValue('confirm_email_id')));
+
+	// If the confirmation email has been lost, create a new one.
+	if (empty($email_confirmation_data)) {
+		$email_data = array(
+			'from_name'     => $config->getValue('from_name'),
+			'from_email'    => $config->getValue('from_email'),
+			'replyto_name'  => $config->getValue('replyto_name'),
+			'replyto_email' => $config->getValue('replyto_email'),
+			'subject'       => $config->getValue('confirm_email_title'),
+			'body'          => $config->getValue('confirm_email_body'),
+			'type'          => '0',
+			'status'        => '99'
+		);
+
+		$confirm_email_id = $mEmail->insert($email_data);
+		if ($confirm_email_id) {
+			$config->save(array('confirm_email_id' => $confirm_email_id));
+
+			$mEmail->reset();
+
+			$mEmail->getFormat = OBJECT;
+			$emailConfirmationData = $mEmail->getOne(false, array('email_id' => $config->getValue('confirm_email_id')));
+		}
+
+		foreach ($users as $userObj) {
+			$result_send = $mailer->sendOne($emailConfirmationData, $userObj, true);
+		}
+
+		return $result_send;
+	}
+} // END mailpoet_wc_send_confirmation_email()

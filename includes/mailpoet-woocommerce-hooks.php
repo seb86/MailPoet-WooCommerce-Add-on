@@ -16,5 +16,5 @@ if(! defined('ABSPATH')) exit; // Exit if accessed directly
 // Hook into the checkout page. Adds the subscription fields.
 add_action('woocommerce_'.get_option('mailpoet_woocommerce_subscription_position'), 'on_checkout_page');
 
-// Hook into order processing
-add_action('woocommerce_checkout_process', 'on_process_order');
+// Subscribe customer to the newsletters once the order has been made.
+add_action('woocommerce_after_checkout_validation', 'on_process_order');
