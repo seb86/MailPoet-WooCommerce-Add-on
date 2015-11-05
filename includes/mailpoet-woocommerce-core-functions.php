@@ -159,22 +159,24 @@ function on_process_order(){
 	);
 
 	$user_helper = WYSIJA::get('user','helper');
-	$user_helper->addSubscriber($data_subscriber);
 
 	// Double Opt-in Option
 	$double_optin = get_option('mailpoet_woocommerce_double_optin');
 	if ( isset( $double_optin ) && $double_optin == 'yes' ) {
+		$user_helper->addSubscriber($data_subscriber, true); // Add the subscriber but unconfirmed.
+
 		$user_model = WYSIJA::get('user', 'model');
 		$subscriber_id = $user_model->getOne(false, array(
 			'email' => trim( $user_data['email'] )
 		) );
 
 		// Send confirmation email.
-		mailpoet_wc_send_confirmation_email($subscriber_id, $subscription_lists);
+		$user_helper->sendConfirmationEmail($subscriber_id, true, $subscription_lists);
 
 		// Display a notice to the customer.
 		wc_add_notice( apply_filters( 'mailpoet_woocommerce_subscribe_confirm', __( 'We have sent you an email to confirm your newsletter subscription. Please confirm your subscription. Thank you.', 'mailpoet-woocommerce-add-on' ) ) );
 	} else {
+		$user_helper->addSubscriber($data_subscriber, false); // Add the subscriber and confirm automatically.
 		// Display a notice to the customer.
 		wc_add_notice( apply_filters( 'mailpoet_woocommerce_subscribe_thank_you', __( 'Thank you for subscribing to our newsletter/s.', 'mailpoet-woocommerce-add-on' ) ) );
 	}
@@ -182,73 +184,3 @@ function on_process_order(){
 	// Now that the user has subscribed, lets update the customers profile so we don't forget.
 	add_user_meta( get_current_user_id(), '_mailpoet_wc_subscribed_to_newsletter', true );
 } // on_process_order()
-
-/**
- * Send a confirmation email if double opt-in was enabled.
- *
- * @since  3.0.0
- * @param  type $user_id
- * @param  type $listids
- * @return boolean
- */
-function mailpoet_wc_send_confirmation_email($user_id, $listids = array()){
-	// Convert user id into an array for MailPoet.
-	if ( !is_array($user_id)) {
-		$user_id = (array) $user_id;
-	}
-
-	/* Get users objects */
-	$modelU = WYSIJA::get('user', 'model');
-	$modelU->getFormat = OBJECT_K;
-	$users = $modelU->get(false, array('equal' => array('user_id' => $user_id, 'status' => 0)));
-
-	$config = WYSIJA::get('config', 'model');
-	$mailer = WYSIJA::get('mailer', 'helper');
-
-	// Check if the selected lists exists before sending any confirmation email.
-	if ($listids) {
-		$mailer->listids = $listids;
-		$mList = WYSIJA::get('list', 'model');
-		$listnamesarray = $mList->get(array('name'), array('list_id' => $listids));
-		$arrayNames = array();
-		foreach ($listnamesarray as $detailname) {
-			$arrayNames[] = $detailname['name'];
-		}
-		$mailer->listnames = $arrayNames;
-	}
-
-	// load confirmation email and if it doesn't exist, create a new one.
-	$mEmail = WYSIJA::get('email', 'model');
-	$mEmail->getFormat = OBJECT;
-	$email_confirmation_data = $mEmail->getOne(false, array('email_id' => $config->getValue('confirm_email_id')));
-
-	// If the confirmation email has been lost, create a new one.
-	if (empty($email_confirmation_data)) {
-		$email_data = array(
-			'from_name'     => $config->getValue('from_name'),
-			'from_email'    => $config->getValue('from_email'),
-			'replyto_name'  => $config->getValue('replyto_name'),
-			'replyto_email' => $config->getValue('replyto_email'),
-			'subject'       => $config->getValue('confirm_email_title'),
-			'body'          => $config->getValue('confirm_email_body'),
-			'type'          => '0',
-			'status'        => '99'
-		);
-
-		$confirm_email_id = $mEmail->insert($email_data);
-		if ($confirm_email_id) {
-			$config->save(array('confirm_email_id' => $confirm_email_id));
-
-			$mEmail->reset();
-
-			$mEmail->getFormat = OBJECT;
-			$emailConfirmationData = $mEmail->getOne(false, array('email_id' => $config->getValue('confirm_email_id')));
-		}
-
-		foreach ($users as $userObj) {
-			$result_send = $mailer->sendOne($emailConfirmationData, $userObj, true);
-		}
-
-		return $result_send;
-	}
-} // END mailpoet_wc_send_confirmation_email()
