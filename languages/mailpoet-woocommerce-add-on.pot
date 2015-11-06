@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: MailPoet WooCommerce Add-on v3.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/seb86/MailPoet-WooCommerce-Add-on/"
 "issues\n"
-"POT-Creation-Date: 2015-11-05 19:15+0100\n"
+"POT-Creation-Date: 2015-11-06 06:12+0100\n"
 "PO-Revision-Date: 2014-03-25 04:16+0100\n"
 "Last-Translator: Sebastien Dumont <mailme@sebastiendumont.com>\n"
 "Language-Team: WP-Translations <wpt@wp-translations.org>\n"
@@ -105,7 +105,7 @@ msgid ""
 msgstr ""
 
 #: includes/admin/class-mailpoet-woocommerce-admin-settings.php:145
-#: includes/mailpoet-woocommerce-core-functions.php:98
+#: includes/mailpoet-woocommerce-core-functions.php:95
 msgid "Yes, please subscribe me to the newsletter/s."
 msgstr ""
 
@@ -199,17 +199,23 @@ msgid ""
 "your WordPress setup."
 msgstr ""
 
-#: includes/mailpoet-woocommerce-core-functions.php:67
+#: includes/mailpoet-woocommerce-core-functions.php:69
 msgid "Subscribe to Newsletter/s"
 msgstr ""
 
-#: includes/mailpoet-woocommerce-core-functions.php:176
+#: includes/mailpoet-woocommerce-core-functions.php:144
+msgid ""
+"There appears to be a problem subscribing you to our newsletter/s. Please "
+"let us know so we can manually add you ourselves. Thank you."
+msgstr ""
+
+#: includes/mailpoet-woocommerce-core-functions.php:177
 msgid ""
 "We have sent you an email to confirm your newsletter subscription. Please "
 "confirm your subscription. Thank you."
 msgstr ""
 
-#: includes/mailpoet-woocommerce-core-functions.php:179
+#: includes/mailpoet-woocommerce-core-functions.php:182
 msgid "Thank you for subscribing to our newsletter/s."
 msgstr ""
 
