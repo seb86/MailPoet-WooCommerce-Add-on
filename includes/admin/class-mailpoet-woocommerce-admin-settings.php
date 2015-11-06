@@ -248,6 +248,10 @@ if ( ! class_exists('MailPoet_WooCommerce_Add_On_Settings')) {
 
 			wp_enqueue_script('mailpoet_woocommerce_settings',  MAILPOET_WOOCOMMERCE_URL_PATH.'/assets/js/admin/settings'.$suffix.'.js', array('jquery', 'select2'), MAILPOET_WOOCOMMERCE_VERSION, true);
 
+			wp_localize_script('mailpoet_woocommerce_settings', 'mailpoet_wc_admin_params', array(
+				'i18n_nav_warning'   => __('The changes you made will be lost if you navigate away from this page.', 'mailpoet-woocommerce-add-on'),
+			) );
+
 			woocommerce_admin_fields( self::get_settings( $current_section ) );
 
 			if( $current_section == 'lists' ){
