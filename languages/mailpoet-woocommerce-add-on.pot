@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: MailPoet WooCommerce Add-on v3.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/seb86/MailPoet-WooCommerce-Add-on/"
 "issues\n"
-"POT-Creation-Date: 2015-11-06 06:12+0100\n"
+"POT-Creation-Date: 2015-11-06 07:54+0100\n"
 "PO-Revision-Date: 2014-03-25 04:16+0100\n"
 "Last-Translator: Sebastien Dumont <mailme@sebastiendumont.com>\n"
 "Language-Team: WP-Translations <wpt@wp-translations.org>\n"
@@ -160,7 +160,7 @@ msgstr ""
 #: includes/admin/class-mailpoet-woocommerce-admin-settings.php:191
 msgid ""
 "Simply tick the lists you want your customers to subscribe to or allow the "
-"customer to choose from and press \"Save Changes\"."
+"customer to choose from and press \"Save changes\"."
 msgstr ""
 
 #: includes/admin/class-mailpoet-woocommerce-admin.php:53

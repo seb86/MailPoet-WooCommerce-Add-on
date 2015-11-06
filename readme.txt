@@ -1,19 +1,32 @@
 === MailPoet WooCommerce Add-on ===
 Contributors:      wysija, sebd86
-Tags:              mailpoet, wysija, woocommerce, extension, add-on, newsletter, newsletters, checkout
+Donate Link:       https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=mailme@sebastiendumont.com&currency_code=&amount=&return=&item_name=Buy+me+a+coffee+for+an+awesome+WordPress+plugin
+Tags:              mailpoet, wysija, woocommerce, e-commerce, extension, add-on, newsletter, newsletters, subscription, checkout, list, lists, double opt-in
 Requires at least: 4.0
 Tested up to:      4.3.1
 Stable tag:        3.0.0
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
-Let your customers subscribe to your newsletter as they checkout with their purchase.
+Let your customers subscribe to your newsletter/s as they checkout with their purchase.
 
 == Description ==
 
-> This plugin extension requires [MailPoet](http://wordpress.org/plugins/wysija-newsletters/) and [WooCommerce](http://wordpress.org/plugins/woocommerce/).
+> #### Requirements
+> [MailPoet](http://wordpress.org/plugins/wysija-newsletters/)
+> [WooCommerce](http://wordpress.org/plugins/woocommerce/)
 
-This small extension adds a checkbox on the checkout page allowing your customers to subscribe to your newsletter as they make their purchase.
+Let your customers subscribe to your newsletter/s as they checkout with their purchase.
+
+= Features =
+
+New and improved with new requested options.
+
+* If you have more than one newsletter list, customers can select which list to subscribe when making a purchase.
+* Double Opt-in.
+* Decide if the checkbox/s to subscribe is checked or un-checked.
+* Place the subscription fields on the checkout page where you want them to be.
+* Custom checkbox label.
 
 = Translate =
 
@@ -23,38 +36,27 @@ If you would like to translate the plugin, you can do so via [Transifex](https:/
 
 Support for MailPoet and it's extensions is provided at [support.mailpoet.com](support.mailpoet.com)
 
+= Contribute on GitHub =
+
+You can [contribute code](https://github.com/seb86/MailPoet-WooCommerce-Add-on/blob/master/CONTRIBUTING.md) to this plugin via the [GitHub](https://github.com/seb86/MailPoet-WooCommerce-Add-on/blob/master/CONTRIBUTING.md) repository.
+
 == Installation ==
 
-= Minimum Requirements =
+Installing "MailPoet WooCommerce Add-on" can be done either by searching for "MailPoet WooCommerce Add-on" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
 
-* [MailPoet](http://wordpress.org/plugins/wysija-newsletters/)
-* [WooCommerce](http://wordpress.org/plugins/woocommerce/)
-
-= Automatic installation =
-
-Automatic installation is the easiest option as WordPress handles the file transfers itself and you don't even need to leave your web browser. To do an automatic install of "MailPoet WooCommerce Add-On", log in to your WordPress admin panel, navigate to the Plugins menu and click Add New.
-
-In the search field type "MailPoet WooCommerce Add-On" and click Search Plugins. Once you've found the plugin extension you can view details about it such as the the point release, rating and description. Most importantly of course, you can install it by simply clicking Install Now. After clicking that link you will be asked if you're sure you want to install the plugin. Click yes and WordPress will automatically complete the installation.
-
-= Manual installation =
-
-The manual installation method involves downloading my plugin and uploading it to your webserver via your favourite FTP application.
-
-1. Download the plugin file to your computer and unzip it
-2. Using an FTP program, or your hosting control panel, upload the unzipped plugin folder to your WordPress installation's wp-content/plugins/ directory.
-3. Activate the plugin from the Plugins menu within the WordPress admin.
+1. Download the plugin via WordPress.org
+2. Upload the ZIP file through the 'Plugins > Add New > Upload' screen in your WordPress dashboard.
+3. Activate the plugin through the 'Plugins' menu in WordPress.
 
 = Setting up the Plugin =
 
-Simply config this plugin under WooCommerce settings in the MailPoet tab. The settings are in two sections. 'General | Lists'
+To setup this plugin, go to "WooCommerce -> Settings" and then the MailPoet tab. The settings are in two sections. 'General | Available Lists'
 
-Under 'General' simply enable the checkbox field to show on the checkout page.
+"General" contains the main settings for the plugin.
 
-You can also change the label of the checkbox. Default 'Yes, add me to your mailing list'
+"Available Lists" contains a table listing of all your created lists. Select the lists you want your customers to subscribe to by ticking the checkbox next to the list and press 'Save changes'.
 
-Next is 'Lists'. Each list you created in MailPoet that you have enabled to send to is listed here. Simply tick the checkbox next to the list your customers will be subscribed to and press 'Save Changes'.
-
-That's it, now when your customers tick the subscribe button on the checkout page, they will be subscribed to the newsletters you selected when processing an order.
+That's it, now when your customers tick the subscribe checkbox on the checkout page, they will be subscribed to the newsletter/s you selected when processing an order.
 
 = Upgrading =
 
@@ -62,22 +64,37 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 == Screenshots ==
 
-1. Subscribe checkbox field on checkout page.
-2. WooCommerce MailPoet Checkout Settings.
-3. WooCommerce MailPoet Newsletters Enabled.
+1. Single checkbox subscribe field on the checkout page.
+2. Multi checkbox subscribe fields on the checkout page.
+3. General plugin settings.
+4. Available Newsletters.
 
 == Frequently Asked Questions ==
 
-= Q1. Can I place the checkbox field any where else? =
-A1. We haven't designed the extension to give the shop manager that option at this time. We will add this option in the future. Currently the checkbox field is set to show after the billing and shipping fields near the submit button.
+= Q1. Can I place the subscription field/s anywhere? =
+A1. Yes you can. Simply select the "Subscription Position" you want and the fields will be placed there for you.
 
-= Q2. Will this extension work with MailPoet 3.0? =
-A2. Once MailPoet 3.0 is available we will be working on re-writing this extension and all the others to make sure they are compaitable with each other again.
+= Q2. I need to double opt-in my customers to send a confirmation email. Do you have this option? =
+A2. Yes we do and it is enabled by default.
+
+= Q3. Can my customers select which lists they wish to subscribe to? =
+A3. Yes they can. Simply set the "Multi-Subscription" option to "Yes". Then on the "Available Lists" select the lists your customers can select from.
+
+= Q4. Will this extension work with MailPoet 3.0? =
+A4. Once MailPoet 3.0 is available we will provide support in this extension to make sure they are compatible.
 
 == Changelog ==
 
-= v3.0.0 - 02/11/2015 =
-* Updated the plugin
+= v3.0.0 - 06/11/2015 =
+* Compatible - WooCommerce v2.3 and up.
+* Added - Customers can now select which newsletter to subscribe to.
+* Added - Double Opt-in option to send a confirmation email.
+* Added - Option to have the checkbox/s checked or un-checked.
+* Added - Option to place the subscription fields on the checkout page were you want.
+* Added - If customer has already subscribed, don't show the subscription field/s on the checkout page.
+* Fixed - Default checkbox label is no longer left blank.
+* Improved - The overall code of this plugin.
+* Updated - Much improved localization copy.
 
 = v2.0.2 - 14/02/2015 =
 * Fixed fatal error conflict with WooCommerce v2.3.3
@@ -113,5 +130,13 @@ A2. Once MailPoet 3.0 is available we will be working on re-writing this extensi
 
 == Upgrade Notice ==
 
-= v2.0.2 - 14/02/2015 =
-* Fixed fatal error conflict with WooCommerce v2.3.3
+= v3.0.0 - 06/11/2015 =
+* Compatible - WooCommerce v2.3 and up.
+* Added - Customers can now select which newsletter to subscribe to.
+* Added - Double Opt-in option to send a confirmation email.
+* Added - Option to have the checkbox/s checked or un-checked.
+* Added - Option to place the subscription fields on the checkout page were you want.
+* Added - If customer has already subscribed, don't show the subscription field/s on the checkout page.
+* Fixed - Default checkbox label is no longer left blank.
+* Improved - The overall code of this plugin.
+* Updated - Much improved localization copy.

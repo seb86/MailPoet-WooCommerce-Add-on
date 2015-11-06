@@ -188,7 +188,7 @@ if ( ! class_exists('MailPoet_WooCommerce_Add_On_Settings')) {
 					array(
 						'title' => __('Available Lists', 'mailpoet-woocommerce-add-on'),
 						'type'  => 'title',
-						'desc'  => __('Simply tick the lists you want your customers to subscribe to or allow the customer to choose from and press "Save Changes".', 'mailpoet-woocommerce-add-on'),
+						'desc'  => __('Simply tick the lists you want your customers to subscribe to or allow the customer to choose from and press "Save changes".', 'mailpoet-woocommerce-add-on'),
 						'id'    => MAILPOET_WOOCOMMERCE_SLUG . '_lists_options'
 					),
 

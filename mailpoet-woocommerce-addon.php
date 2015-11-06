@@ -2,7 +2,7 @@
 /*
  * Plugin Name:       MailPoet WooCommerce Add-on
  * Plugin URI:        https://wordpress.org/plugins/mailpoet-woocommerce-add-on
- * Description:       Adds a checkbox on the checkout page for your customers to subscribe to your MailPoet newsletters once an order has completed.
+ * Description:       Let your customers subscribe to your newsletter as they checkout with their purchase.
  * Version:           3.0.0
  * Author:            Sébastien Dumont
  * Author URI:        http://www.sebastiendumont.com
@@ -11,7 +11,6 @@
  * Text Domain:       mailpoet-woocommerce-add-on
  * Domain Path:       languages
  * Network:           false
- * GitHub Plugin URI: https://github.com/seb86/MailPoet-WooCommerce-Add-on/
  *
  * MailPoet WooCommerce Add-on is distributed under the terms of the
  * GNU General Public License as published by the Free Software Foundation,
