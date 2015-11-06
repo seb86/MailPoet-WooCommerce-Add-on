@@ -45,13 +45,12 @@ if(! class_exists('MailPoet_WooCommerce_Install')){
 		}
 
 		/**
-		 * Default options
+		 * Sets up the default options for the settings page.
 		 *
-		 * Sets up the default options used on the settings page
-		 *
+		 * @since  1.0.0
 		 * @access public
 		 */
-		function create_options() {
+		public function create_options() {
 			// Include settings so that we can run through defaults.
 			include_once( 'class-mailpoet-woocommerce-admin-settings.php' );
 
@@ -78,7 +77,7 @@ if(! class_exists('MailPoet_WooCommerce_Install')){
 			global $wpdb;
 
 			// Delete options
-			$wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE 'mailpoet_woocommerce_addon_%';" );
+			$wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE 'mailpoet_woocommerce_%';" );
 		} // END delete_options()
 
 	} // END if class.

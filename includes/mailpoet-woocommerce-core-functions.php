@@ -37,7 +37,6 @@ if( !function_exists('mailpoet_lists') ){
  *
  * @since   1.0.0
  * @version 3.0.0
- * @param   $checkout
  * @filter  mailpoet_woocommerce_subscription_section_title
  * @uses    woocommerce_form_field()
  * @uses    mailpoet_lists()
@@ -45,7 +44,7 @@ if( !function_exists('mailpoet_lists') ){
  * @uses    get_user_meta()
  * @uses    get_current_user_id()
  */
-function on_checkout_page($checkout){
+function on_checkout_page(){
 	$enable_checkout    = get_option('mailpoet_woocommerce_enable_checkout'); // Is the add-on enabled?
 	$customer_selects   = get_option('mailpoet_woocommerce_customer_selects'); // Multi-Subscriptions
 	$checkbox_status    = get_option('mailpoet_woocommerce_checkbox_status'); // Checkbox Status
@@ -121,6 +120,7 @@ function on_checkout_page($checkout){
 function on_process_order(){
 	$mailpoet_checkout_subscribe = isset( $_POST['mailpoet_checkout_subscribe'] ) ? 1 : 0;
 
+	$subscription_lists = '';
 	$subscribe_customer = false; // Default to false unless told otherwise.
 
 	// If the checkbox has been ticked then the customer is added to the MailPoet lists enabled.
