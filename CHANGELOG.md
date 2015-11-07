@@ -1,3 +1,6 @@
+## v3.0.1 - 07th November 2015
+* Corrected incorrect text domain for loading the language files.
+
 ## v3.0.0 - 06th November 2015
 * Compatible - WooCommerce v2.3 and up.
 * Added - Customers can now select which newsletter to subscribe to.
