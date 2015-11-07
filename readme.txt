@@ -4,7 +4,7 @@ Donate Link:       https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ma
 Tags:              mailpoet, wysija, woocommerce, e-commerce, extension, add-on, newsletter, newsletters, subscription, checkout, list, lists, double opt-in
 Requires at least: 4.0
 Tested up to:      4.3.1
-Stable tag:        3.0.0
+Stable tag:        3.0.1
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ Let your customers subscribe to your newsletter/s as they checkout with their pu
 == Description ==
 
 > #### Requirements
-> [MailPoet](http://wordpress.org/plugins/wysija-newsletters/)
+> [MailPoet](http://wordpress.org/plugins/wysija-newsletters/)<br />
 > [WooCommerce](http://wordpress.org/plugins/woocommerce/)
 
 Let your customers subscribe to your newsletter/s as they checkout with their purchase.
@@ -84,6 +84,9 @@ A3. Yes they can. Simply set the "Multi-Subscription" option to "Yes". Then on t
 A4. Once MailPoet 3.0 is available we will provide support in this extension to make sure they are compatible.
 
 == Changelog ==
+
+= v3.0.1 - 07/11/2015 =
+* Corrected incorrect text domain for loading the language files.
 
 = v3.0.0 - 06/11/2015 =
 * Compatible - WooCommerce v2.3 and up.
