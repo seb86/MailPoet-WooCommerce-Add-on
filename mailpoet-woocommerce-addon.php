@@ -3,7 +3,7 @@
  * Plugin Name:       MailPoet WooCommerce Add-on
  * Plugin URI:        https://wordpress.org/plugins/mailpoet-woocommerce-add-on
  * Description:       Let your customers subscribe to your newsletter as they checkout with their purchase.
- * Version:           3.0.0
+ * Version:           3.0.1
  * Author:            Sébastien Dumont
  * Author URI:        http://www.sebastiendumont.com
  * License:           GPL-2.0+
@@ -138,7 +138,7 @@ final class MailPoet_WooCommerce_Add_On {
 	 * @access private
 	 */
 	private function setup_constants(){
-		$this->define('MAILPOET_WOOCOMMERCE_VERSION', '3.0.0');
+		$this->define('MAILPOET_WOOCOMMERCE_VERSION', '3.0.1');
 		$this->define('MAILPOET_WOOCOMMERCE_FILE', __FILE__);
 		$this->define('MAILPOET_WOOCOMMERCE_SLUG', 'mailpoet-woocommerce-add-on');
 
@@ -186,7 +186,7 @@ final class MailPoet_WooCommerce_Add_On {
 	 * following ones if the same translation is present.
 	 *
 	 * @since  1.0.0
-	 * @version 3.0.0
+	 * @version 3.0.1
 	 * @access public
 	 * @filter mailpoet_woocommerce_add_on_languages_directory
 	 * @filter plugin_locale
@@ -213,7 +213,7 @@ final class MailPoet_WooCommerce_Add_On {
 			load_textdomain('mailpoet-woocommerce-add-on', $mofile_local);
 		} else {
 			// Load the default language files
-			load_plugin_textdomain('auto-load-next-post-premium', false, $lang_dir);
+			load_plugin_textdomain('mailpoet-woocommerce-add-on', false, $lang_dir);
 		}
 	} // END load_plugin_textdomain()
 
