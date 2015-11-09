@@ -111,13 +111,21 @@ function on_checkout_page(){
  * the newsletters selected once the order has been made.
  *
  * @since   1.0.0
- * @version 3.0.0
- * @uses    add_user_meta()
+ * @version 3.0.2
+ * @uses    is_user_logged_in()
+ * @uses    get_user_meta()
+ * @uses    get_current_user_id()
  * @filter  mailpoet_woocommerce_subscribe_error
  * @filter  mailpoet_woocommerce_subscribe_confirm
  * @filter  mailpoet_woocommerce_subscribe_thank_you
+ * @uses    add_user_meta()
  */
 function on_process_order(){
+	// If the user is logged in and has already subscribed, don't show the subscription fields.
+	if( is_user_logged_in() && get_user_meta( get_current_user_id(), '_mailpoet_wc_subscribed_to_newsletter', true ) ){
+		return;
+	}
+
 	$mailpoet_checkout_subscribe = isset( $_POST['mailpoet_checkout_subscribe'] ) ? 1 : 0;
 
 	$subscription_lists = '';
