@@ -1,3 +1,6 @@
+## v3.0.2 - 09th November 2015
+* Added another check if logged in user is subscribed for function - on_process_order(). This fix's an issue when a returning customer who is already subscribed places another order.
+
 ## v3.0.1 - 07th November 2015
 * Corrected incorrect text domain for loading the language files.
 
