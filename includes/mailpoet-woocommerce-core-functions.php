@@ -60,7 +60,7 @@ function on_checkout_page(){
 
 		// If the user is logged in and has already subscribed, don't show the subscription fields.
 		if( is_user_logged_in() && get_user_meta( get_current_user_id(), '_mailpoet_wc_subscribed_to_newsletter', true ) ){
-			return;
+			return false;
 		}
 
 		echo '<div id="mailpoet_subscription_section">';
@@ -121,11 +121,6 @@ function on_checkout_page(){
  * @uses    add_user_meta()
  */
 function on_process_order(){
-	// If the user is logged in and has already subscribed, don't show the subscription fields.
-	if( is_user_logged_in() && get_user_meta( get_current_user_id(), '_mailpoet_wc_subscribed_to_newsletter', true ) ){
-		return;
-	}
-
 	$mailpoet_checkout_subscribe = isset( $_POST['mailpoet_checkout_subscribe'] ) ? 1 : 0;
 
 	$subscription_lists = '';
@@ -143,13 +138,17 @@ function on_process_order(){
 		$subscribe_customer = true;
 	}
 
+	// If the user is logged in and has already subscribed, don't proceed any further.
+	if( is_user_logged_in() && get_user_meta( get_current_user_id(), '_mailpoet_wc_subscribed_to_newsletter', true ) ){
+		$subscribe_customer = false;
+		return false;
+	}
+
 	/**
-	  * If all is good to subscribe the customer, then we continue.
-		* Otherwise ignore the rest and let the customer know there
-		* was a problem.
-		*/
+	 * If the customer does not want to subscribe 
+	 * or has already subscribed, we ignore the rest.
+	 */
 	if( !$subscribe_customer ){
-		wc_add_notice( apply_filters( 'mailpoet_woocommerce_subscribe_error', __('There appears to be a problem subscribing you to our newsletter/s. Please let us know so we can manually add you ourselves. Thank you.', 'mailpoet-woocommerce-add-on') ), 'error' );
 		return false;
 	}
 
@@ -176,6 +175,15 @@ function on_process_order(){
 			'email' => trim( $user_data['email'] )
 		) );
 
+		/**
+		 * If the customer was not added as a subscriber due to 
+		 * a complication with MailPoet, let the customer know.
+		 */
+		if( $subscriber_id == 0 || empty( $subscriber_id ) ){
+			wc_add_notice( apply_filters( 'mailpoet_woocommerce_subscribe_error', __('There appears to be a problem subscribing you to our newsletter/s. Please let us know so we can manually add you ourselves. Thank you.', 'mailpoet-woocommerce-add-on') ), 'error' );
+			return false;
+		}
+
 		$user_model->update( array( 'status' => -1 ), array( 'user_id' => get_current_user_id() ) ); // This is to make sure the customer is not subscribed already.
 
 		// Send confirmation email.
@@ -186,6 +194,21 @@ function on_process_order(){
 	} else {
 		$user_helper->addSubscriber($data_subscriber, false); // Add the subscriber and confirm automatically.
 		$user_helper->confirm_user(); // Confirm user
+
+		$user_model = WYSIJA::get('user', 'model');
+		$subscriber_id = $user_model->getOne(false, array(
+			'email' => trim( $user_data['email'] )
+		) );
+
+		/**
+		 * If the customer was not added as a subscriber due to 
+		 * a complication with MailPoet, let the customer know.
+		 */
+		if( $subscriber_id == 0 || empty( $subscriber_id ) ){
+			wc_add_notice( apply_filters( 'mailpoet_woocommerce_subscribe_error', __('There appears to be a problem subscribing you to our newsletter/s. Please let us know so we can manually add you ourselves. Thank you.', 'mailpoet-woocommerce-add-on') ), 'error' );
+			return false;
+		}
+
 		// Display a notice to the customer.
 		wc_add_notice( apply_filters( 'mailpoet_woocommerce_subscribe_thank_you', __( 'Thank you for subscribing to our newsletter/s.', 'mailpoet-woocommerce-add-on' ) ) );
 	}
