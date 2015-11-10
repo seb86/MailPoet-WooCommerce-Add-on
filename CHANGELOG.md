@@ -1,5 +1,6 @@
-## v3.0.2 - 09th November 2015
-* Added another check if logged in user is subscribed for function - on_process_order(). This fix's an issue when a returning customer who is already subscribed places another order.
+## v3.0.2 - 10th November 2015
+* Added another check if logged in user is subscribed for function - on_process_order(). This fixes an issue when a returning customer who is already subscribed places another order.
+* Moved subscription check and applied it to both single and multi subscriptions methods. This fixes the ability to order without subscribing and re-order if a previous customer.
 
 ## v3.0.1 - 07th November 2015
 * Corrected incorrect text domain for loading the language files.

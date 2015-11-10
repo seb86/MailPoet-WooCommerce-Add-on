@@ -85,8 +85,9 @@ A4. Once MailPoet 3.0 is available we will provide support in this extension to 
 
 == Changelog ==
 
-= v3.0.2 - 09/11/2015 =
-* Added another check if logged in user is subscribed for function - on_process_order(). This fix's an issue when a returning customer who is already subscribed places another order.
+= v3.0.2 - 10/11/2015 =
+* Added another check if logged in user is subscribed for function - on_process_order(). This fixes an issue when a returning customer who is already subscribed places another order.
+* Moved subscription check and applied it to both single and multi subscriptions methods. This fixes the ability to order without subscribing and re-order if a previous customer.
 
 = v3.0.1 - 07/11/2015 =
 * Corrected incorrect text domain for loading the language files.
