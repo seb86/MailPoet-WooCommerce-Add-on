@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: MailPoet WooCommerce Add-on v3.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/seb86/MailPoet-WooCommerce-Add-on/"
 "issues\n"
-"POT-Creation-Date: 2015-11-06 07:54+0100\n"
+"POT-Creation-Date: 2015-11-10 04:37+0100\n"
 "PO-Revision-Date: 2014-03-25 04:16+0100\n"
 "Last-Translator: Sebastien Dumont <mailme@sebastiendumont.com>\n"
 "Language-Team: WP-Translations <wpt@wp-translations.org>\n"
@@ -105,7 +105,7 @@ msgid ""
 msgstr ""
 
 #: includes/admin/class-mailpoet-woocommerce-admin-settings.php:145
-#: includes/mailpoet-woocommerce-core-functions.php:95
+#: includes/mailpoet-woocommerce-core-functions.php:94
 msgid "Yes, please subscribe me to the newsletter/s."
 msgstr ""
 
@@ -163,6 +163,11 @@ msgid ""
 "customer to choose from and press \"Save changes\"."
 msgstr ""
 
+#: includes/admin/class-mailpoet-woocommerce-admin-settings.php:252
+msgid ""
+"The changes you made will be lost if you navigate away from this page."
+msgstr ""
+
 #: includes/admin/class-mailpoet-woocommerce-admin.php:53
 msgid "Settings"
 msgstr ""
@@ -199,26 +204,27 @@ msgid ""
 "your WordPress setup."
 msgstr ""
 
-#: includes/mailpoet-woocommerce-core-functions.php:69
+#: includes/mailpoet-woocommerce-core-functions.php:68
 msgid "Subscribe to Newsletter/s"
 msgstr ""
 
-#: includes/mailpoet-woocommerce-core-functions.php:144
+#: includes/mailpoet-woocommerce-core-functions.php:183
+#: includes/mailpoet-woocommerce-core-functions.php:208
 msgid ""
 "There appears to be a problem subscribing you to our newsletter/s. Please "
 "let us know so we can manually add you ourselves. Thank you."
 msgstr ""
 
-#: includes/mailpoet-woocommerce-core-functions.php:177
+#: includes/mailpoet-woocommerce-core-functions.php:193
 msgid ""
 "We have sent you an email to confirm your newsletter subscription. Please "
 "confirm your subscription. Thank you."
 msgstr ""
 
-#: includes/mailpoet-woocommerce-core-functions.php:182
+#: includes/mailpoet-woocommerce-core-functions.php:213
 msgid "Thank you for subscribing to our newsletter/s."
 msgstr ""
 
-#: mailpoet-woocommerce-addon.php:83 mailpoet-woocommerce-addon.php:95
+#: mailpoet-woocommerce-addon.php:82 mailpoet-woocommerce-addon.php:94
 msgid "Cheatin’ huh?"
 msgstr ""
