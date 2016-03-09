@@ -19,7 +19,7 @@ If you would like to translate the plugin, you can do so via [Transifex](https:/
 
 ### Support
 
-Support for MailPoet and it's extensions is provided at [support.mailpoet.com](support.mailpoet.com)
+Support for MailPoet and it's extensions is provided at [support.mailpoet.com](https://support.mailpoet.com/)
 
 ### Contribute on GitHub
 You can [contribute code](https://github.com/seb86/MailPoet-WooCommerce-Add-on/blob/master/CONTRIBUTING.md) to this plugin via the [GitHub](https://github.com/seb86/MailPoet-WooCommerce-Add-on/blob/master/CONTRIBUTING.md) repository.
