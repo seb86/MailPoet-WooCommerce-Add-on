@@ -12,6 +12,3 @@ Let your customers subscribe to your newsletter or newsletters as they checkout 
 * Decide if the checkbox/s to subscribe is checked or un-checked.
 * Place the subscription fields on the checkout page where you want them to be.
 * Custom checkbox label.
-
-### Contribute on GitHub
-You can [contribute code](https://github.com/seb86/MailPoet-WooCommerce-Add-on/blob/master/CONTRIBUTING.md) to this plugin via the [GitHub](https://github.com/seb86/MailPoet-WooCommerce-Add-on/blob/master/CONTRIBUTING.md) repository.
