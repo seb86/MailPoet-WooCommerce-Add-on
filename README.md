@@ -4,6 +4,8 @@
 
 > This plugin will no longer be maintained except for security reasons. New version coming soon for MailPoet 3.
 
+### Description
+
 Let your customers subscribe to your newsletter or newsletters as they checkout with their purchase.
 
 ### Features
@@ -12,3 +14,7 @@ Let your customers subscribe to your newsletter or newsletters as they checkout 
 * Decide if the checkbox/s to subscribe is checked or un-checked.
 * Place the subscription fields on the checkout page where you want them to be.
 * Custom checkbox label.
+
+### Subscribe for MailPoet 3 Add-on
+
+If you wish to be notified of the release of this add-on for MailPoet 3 then click the link: http://eepurl.com/c0hQe9
