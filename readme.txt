@@ -33,7 +33,7 @@ MailPoet Checkout Subscription for WooCommerce (Legacy) is in need of translatio
 
 = Support =
 
-This plugin will no longer be supported or maintained. I suggest you upgrade to <a href="https://sebastiendumont.com/product-category/mailpoet/">MailPoet Checkout Subscription for WooCommerce</a> to receive continued support. <a href="https://wordpress.org/plugins/mailpoet/">MailPoet 3</a> will be required. All previous settings will be carried over.
+This plugin will no longer be supported or maintained. I suggest you upgrade <a href="https://sebastiendumont.com/product-category/mailpoet/">MailPoet Checkout Subscription for WooCommerce</a> to receive continued support. <a href="https://wordpress.org/plugins/mailpoet/">MailPoet 3</a> will be required. All previous settings will be carried over.
 
 > #### Additional Features
 > - Manage subscription from account dashboard.<br />

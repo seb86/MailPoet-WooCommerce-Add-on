@@ -196,7 +196,7 @@ function on_process_order(){
 		 * a complication with MailPoet, let the customer know.
 		 */
 		if ( $subscriber_id == 0 || empty( $subscriber_id ) ) {
-			wc_add_notice( apply_filters( 'mailpoet_woocommerce_subscribe_error', __( 'There appears to be a problem subscribing you to our newsletter. Please let us know so we can manually add you ourselves. Thank you.', 'mailpoet-woocommerce-add-on') ), 'error' );
+			wc_add_notice( apply_filters( 'mailpoet_woocommerce_subscribe_error', __( 'There appears to be a problem subscribing you to our newsletter. Please let us know so we can manually add you ourselves. Thank you.', 'mailpoet-woocommerce-add-on' ) ), 'error' );
 
 			return false;
 		}
@@ -236,7 +236,7 @@ function on_process_order(){
 
 		// Display a notice to the customer.
 		if ( apply_filters( 'mailpoet_woocommerce_display_thank_you_notice', true ) ) {
-			wc_add_notice( apply_filters( 'mailpoet_woocommerce_subscribe_thank_you', __( 'Thank you for subscribing to our newsletter/s.', 'mailpoet-woocommerce-add-on' ) ) );
+			wc_add_notice( apply_filters( 'mailpoet_woocommerce_subscribe_thank_you', __( 'Thank you for subscribing to our newsletter.', 'mailpoet-woocommerce-add-on' ) ) );
 		}
 	}
 
