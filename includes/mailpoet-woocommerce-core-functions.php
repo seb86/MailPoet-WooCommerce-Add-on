@@ -276,7 +276,7 @@ if ( ! function_exists( 'mailpoet_woocommerce_form_field' ) ) {
 
 		if ( $args['required'] ) {
 			$args['class'][] = 'validate-required';
-			$required = ' <abbr class="required" title="' . esc_attr__( 'required', 'woocommerce'  ) . '">*</abbr>';
+			$required = ' <abbr class="required" title="' . esc_attr__( 'required', 'mailpoet-woocommerce-add-on'  ) . '">*</abbr>';
 		}
 		else {
 			$required = '';
