@@ -1,44 +1,47 @@
 === MailPoet WooCommerce Add-on ===
 Contributors:      wysija, sebd86
-Donate Link:       https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=mailme@sebastiendumont.com&currency_code=&amount=&return=&item_name=Buy+me+a+coffee+for+an+awesome+WordPress+plugin
-Tags:              mailpoet, wysija, woocommerce, e-commerce, extension, add-on, newsletter, newsletters, subscription, checkout, list, lists, double opt-in
-Requires at least: 4.0
-Tested up to:      4.3.1
+Donate Link:       https://www.paypal.me/CodeBreaker
+Tags:              mailpoet, woo commerce, ecommerce, e-commerce, extension, newsletter, newsletters, subscription, checkout, integration, post-notification, email
+Requires at least: 4.7
+Tested up to:      4.9
 Stable tag:        3.0.2
-License:           GPLv2 or later
-License URI:       http://www.gnu.org/licenses/gpl-2.0.html
+License:           GPLv3
+License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 
 Let your customers subscribe to your newsletter/s as they checkout with their purchase.
 
 == Description ==
 
-> #### Requirements
-> [MailPoet](http://wordpress.org/plugins/wysija-newsletters/)<br />
-> [WooCommerce](http://wordpress.org/plugins/woocommerce/)
+> #### Minimum Requirements
+> [MailPoet 2](https://wordpress.org/plugins/wysija-newsletters/)<br />
+> [WooCommerce v3.0.0 or higher](https://wordpress.org/plugins/woocommerce/)<br />
+> [WordPress v4.7 or higher](https://wordpress.org/download/)
 
-Let your customers subscribe to your newsletter/s as they checkout with their purchase.
+This integration connects your WooCommerce store with MailPoet 2 so your customers can subscribe to your newsletter/s as they checkout with their purchase.
 
 = Features =
 
-New and improved with new requested options.
-
-* If you have more than one newsletter list, customers can select which list to subscribe when making a purchase.
+* If you have more than one newsletter list, customers can select which list to subscribe to when making a purchase.
 * Double Opt-in.
 * Decide if the checkbox/s to subscribe is checked or un-checked.
 * Place the subscription fields on the checkout page where you want them to be.
 * Custom checkbox label.
 
-= Translate =
+= Translation Support =
 
-If you would like to translate the plugin, you can do so via [Transifex](https://www.transifex.com/projects/p/mailpoet-woocommerce-add-on/).
+MailPoet WooCommerce Add-on is in need of translations. Is the plugin not translated in your language or do you spot errors with the current translations? Helping out is easy! Click on "[Translate MailPoet WooCommerce Add-on](https://translate.wordpress.org/projects/wp-plugins/mailpoet-woocommerce-add-on)" on the side of this page.
 
 = Support =
 
-Support for MailPoet and it's extensions is provided at [support.mailpoet.com](support.mailpoet.com)
+This plugin will no longer be supported or maintained. I suggest you upgrade to <a href="https://sebastiendumont.com/product-category/mailpoet/">MailPoet Checkout Subscription for WooCommerce</a> to receive continued support. <a href="https://wordpress.org/plugins/mailpoet/">MailPoet 3</a> will be required. All previous settings will be carried over.
 
-= Contribute on GitHub =
+> #### Additional Features
+> - Manage subscription from account dashboard.<br />
 
-You can [contribute code](https://github.com/seb86/MailPoet-WooCommerce-Add-on/blob/master/CONTRIBUTING.md) to this plugin via the [GitHub](https://github.com/seb86/MailPoet-WooCommerce-Add-on/blob/master/CONTRIBUTING.md) repository.
+**More information**
+
+- Other [WordPress plugins](http://profiles.wordpress.org/sebd86/) by [Sébastien Dumont](https://sebastiendumont.com)
+- Contact Sébastien on Twitter: [@sebd86](http://twitter.com/sebd86)
 
 == Installation ==
 
@@ -80,10 +83,18 @@ A2. Yes we do and it is enabled by default.
 = Q3. Can my customers select which lists they wish to subscribe to? =
 A3. Yes they can. Simply set the "Multi-Subscription" option to "Yes". Then on the "Available Lists" select the lists your customers can select from.
 
-= Q4. Will this extension work with MailPoet 3.0? =
-A4. Once MailPoet 3.0 is available we will provide support in this extension to make sure they are compatible.
+= Q4. Will this extension work with MailPoet 3? =
+A4. No. If you are using MailPoet 3 then you will need to <a href="https://sebastiendumont.com/product-category/mailpoet/">upgrade to MailPoet Checkout Subscription for WooCommerce</a>.
+
+= Q5. Will my settings be carried over to the updated integration if I upgrade? =
+A5. Yes they will.
 
 == Changelog ==
+
+= v4.0.0 - 24/11/2017 =
+* Refactored to be more secure and stable.
+* Tested with WooCommerce v3.
+* Tested with WordPress v4.9.
 
 = v3.0.2 - 10/11/2015 =
 * Added another check if logged in user is subscribed for function - on_process_order(). This fixes an issue when a returning customer who is already subscribed places another order.
@@ -137,13 +148,6 @@ A4. Once MailPoet 3.0 is available we will provide support in this extension to 
 
 == Upgrade Notice ==
 
-= v3.0.0 - 06/11/2015 =
-* Compatible - WooCommerce v2.3 and up.
-* Added - Customers can now select which newsletter to subscribe to.
-* Added - Double Opt-in option to send a confirmation email.
-* Added - Option to have the checkbox/s checked or un-checked.
-* Added - Option to place the subscription fields on the checkout page were you want.
-* Added - If customer has already subscribed, don't show the subscription field/s on the checkout page.
-* Fixed - Default checkbox label is no longer left blank.
-* Improved - The overall code of this plugin.
-* Updated - Much improved localization copy.
+= v4.0.0 - 24/11/2017 =
+
+Last update for this integration between MailPoet 2 and WooCommerce. See plugin details on how to upgrade for MailPoet 3 support.
