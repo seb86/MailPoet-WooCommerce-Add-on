@@ -211,7 +211,7 @@ function on_process_order(){
 		$user_helper->sendConfirmationEmail( $subscriber_id, true, $subscription_lists );
 
 		// Display a notice to the customer.
-		if ( apply_filters( 'mailpoet_woocommerce_display_confirm_notice', true ) {
+		if ( apply_filters( 'mailpoet_woocommerce_display_confirm_notice', true ) ) {
 			wc_add_notice( apply_filters( 'mailpoet_woocommerce_subscribe_confirm', __( 'We have sent you an email to confirm your newsletter subscription. Thank you.', 'mailpoet-woocommerce-add-on' ) ) );
 		}
 	}
@@ -235,7 +235,7 @@ function on_process_order(){
 		}
 
 		// Display a notice to the customer.
-		if ( apply_filters( 'mailpoet_woocommerce_display_thank_you_notice', true ) {
+		if ( apply_filters( 'mailpoet_woocommerce_display_thank_you_notice', true ) ) {
 			wc_add_notice( apply_filters( 'mailpoet_woocommerce_subscribe_thank_you', __( 'Thank you for subscribing to our newsletter/s.', 'mailpoet-woocommerce-add-on' ) ) );
 		}
 	}
