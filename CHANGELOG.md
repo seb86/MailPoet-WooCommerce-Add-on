@@ -3,8 +3,10 @@
 * Renamed main plugin file to match text domain. Must re-activate plugin manually.
 * Added two new filters that controls the display of confirmation and thank you notice once customer has subscribed.
 * Added two new action hooks for checkout field. See documentation.
-* Tested with WooCommerce v3.
-* Tested with WordPress v4.9.
+* Updated settings page to be compatible with WooCommerce fully again.
+* Updated settings JavaScript.
+* Tested with WooCommerce v3.2.5
+* Tested with WordPress v4.9
 
 ## v3.0.2 - 10th November 2015
 * Added another check if logged in user is subscribed for function - on_process_order(). This fixes an issue when a returning customer who is already subscribed places another order.

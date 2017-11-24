@@ -1,4 +1,4 @@
-=== MailPoet WooCommerce Add-on ===
+=== MailPoet Checkout Subscription for WooCommerce (Legacy) ===
 Contributors:      wysija, sebd86
 Donate Link:       https://www.paypal.me/CodeBreaker
 Tags:              mailpoet, woo commerce, ecommerce, e-commerce, extension, newsletter, newsletters, subscription, checkout, integration, post-notification, email
@@ -17,7 +17,7 @@ Let your customers subscribe to your newsletter/s as they checkout with their pu
 > [WooCommerce v3.0.0 or higher](https://wordpress.org/plugins/woocommerce/)<br />
 > [WordPress v4.7 or higher](https://wordpress.org/download/)
 
-This integration connects your WooCommerce store with MailPoet 2 so your customers can subscribe to your newsletter/s as they checkout with their purchase.
+This integration connects your WooCommerce store with MailPoet 2 so your customers can subscribe to your newsletters as they checkout with their purchase.
 
 = Features =
 
@@ -29,7 +29,7 @@ This integration connects your WooCommerce store with MailPoet 2 so your custome
 
 = Translation Support =
 
-MailPoet WooCommerce Add-on is in need of translations. Is the plugin not translated in your language or do you spot errors with the current translations? Helping out is easy! Click on "[Translate MailPoet WooCommerce Add-on](https://translate.wordpress.org/projects/wp-plugins/mailpoet-woocommerce-add-on)" on the side of this page.
+MailPoet Checkout Subscription for WooCommerce (Legacy) is in need of translations. Is the plugin not translated in your language or do you spot errors with the current translations? Helping out is easy! Click on "[Translate MailPoet Checkout Subscription for WooCommerce (Legacy)](https://translate.wordpress.org/projects/wp-plugins/mailpoet-woocommerce-add-on)" on the side of this page.
 
 = Support =
 
@@ -37,6 +37,7 @@ This plugin will no longer be supported or maintained. I suggest you upgrade to 
 
 > #### Additional Features
 > - Manage subscription from account dashboard.<br />
+> - Subscription notice added to order email if customers subscribed.<br />
 
 **More information**
 
@@ -45,7 +46,7 @@ This plugin will no longer be supported or maintained. I suggest you upgrade to 
 
 == Installation ==
 
-Installing "MailPoet WooCommerce Add-on" can be done either by searching for "MailPoet WooCommerce Add-on" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
+Installing "MailPoet Checkout Subscription for WooCommerce (Legacy)" can be done either by searching for "MailPoet Checkout Subscription for WooCommerce (Legacy)" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
 
 1. Download the plugin via WordPress.org
 2. Upload the ZIP file through the 'Plugins > Add New > Upload' screen in your WordPress dashboard.
@@ -84,7 +85,7 @@ A2. Yes we do and it is enabled by default.
 A3. Yes they can. Simply set the "Multi-Subscription" option to "Yes". Then on the "Available Lists" select the lists your customers can select from.
 
 = Q4. Will this extension work with MailPoet 3? =
-A4. No. If you are using MailPoet 3 then you will need to <a href="https://sebastiendumont.com/product-category/mailpoet/">upgrade to MailPoet Checkout Subscription for WooCommerce</a>.
+A4. No. If you are using MailPoet 3 then you will need to <a href="https://sebastiendumont.com/product-category/mailpoet/">upgrade MailPoet Checkout Subscription for WooCommerce</a> to the new version.
 
 = Q5. Will my settings be carried over to the updated integration if I upgrade? =
 A5. Yes they will.
@@ -96,8 +97,10 @@ A5. Yes they will.
 * Renamed main plugin file to match text domain. Must re-activate plugin manually.
 * Added two new filters that controls the display of confirmation and thank you notice once customer has subscribed.
 * Added two new action hooks for checkout field. See documentation.
-* Tested with WooCommerce v3.
-* Tested with WordPress v4.9.
+* Updated settings page to be compatible with WooCommerce fully again.
+* Updated settings JavaScript.
+* Tested with WooCommerce v3.2.5
+* Tested with WordPress v4.9
 
 = v3.0.2 - 10/11/2015 =
 * Added another check if logged in user is subscribed for function - on_process_order(). This fixes an issue when a returning customer who is already subscribed places another order.
