@@ -125,6 +125,10 @@ module.exports = function(grunt) {
 				overwrite: true,
 				replacements: [
 					{
+						from: /Plugin Name:.*$/m,
+						to: "Plugin Name: <%= pkg.title %>"
+					},
+					{
 						from: /Stable tag:.*$/m,
 						to: "Stable tag:        <%= pkg.version %>"
 					},

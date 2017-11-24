@@ -1,8 +1,8 @@
 <?php
 /*
- * Plugin Name: MailPoet WooCommerce Add-on
+ * Plugin Name: MailPoet Checkout Subscription for WooCommerce - Legacy
  * Plugin URI:  https://wordpress.org/plugins/mailpoet-woocommerce-add-on
- * Version:     4.0.0
+ * Version:     4.0.1
  * Description: Let your customers subscribe to your newsletter as they checkout with their purchase.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
@@ -60,9 +60,9 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On' ) ) {
 		public $required_woo = '3.0.0';
 
 		/**
-		 * Main MailPoet WooCommerce Add-on Instance
+		 * Main MailPoet Checkout Subscription for WooCommerce (Legacy) Instance
 		 *
-		 * Ensures only one instance of MailPoet WooCommerce Add-on is loaded or can be loaded.
+		 * Ensures only one instance of MailPoet Checkout Subscription for WooCommerce (Legacy) is loaded or can be loaded.
 		 *
 		 * @access public
 		 * @static
@@ -212,7 +212,7 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On' ) ) {
 		 * @return void
 		 */
 		public function wc_mailpoet_admin_notice() {
-			echo '<div class="error"><p>' . sprintf( __( '%1$s requires at least %2$s v%3$s in order to function. Please upgrade %2$s.', 'mailpoet-woocommerce-add-on' ), 'MailPoet WooCommerce Add-on', 'WooCommerce', $this->required_woo ) . '</p></div>';
+			echo '<div class="error"><p>' . sprintf( __( '%1$s requires at least %2$s v%3$s in order to function. Please upgrade %2$s.', 'mailpoet-woocommerce-add-on' ), 'MailPoet Checkout Subscription for WooCommerce (Legacy)', 'WooCommerce', $this->required_woo ) . '</p></div>';
 		} // END wc_mailpoet_wc_admin_notice()
 
 		/**

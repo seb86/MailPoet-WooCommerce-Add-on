@@ -1,3 +1,6 @@
+## v4.0.1 - 24th November 2017
+* Updated name of plugin fully.
+
 ## v4.0.0 - 24th November 2017
 * Refactored to be more secure and stable.
 * Renamed main plugin file to match text domain. Must re-activate plugin manually.
@@ -5,6 +8,8 @@
 * Added two new action hooks for checkout field.  [See documentation](https://github.com/seb86/MailPoet-WooCommerce-Add-on/wiki)
 * Updated settings page to be compatible with WooCommerce fully again.
 * Updated settings JavaScript.
+* Requires WooCommerce v3.0.0 and up.
+* Requires WordPress v4.7 and up.
 * Tested with WooCommerce v3.2.5
 * Tested with WordPress v4.9
 

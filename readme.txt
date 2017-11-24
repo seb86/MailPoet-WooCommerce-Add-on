@@ -4,11 +4,11 @@ Donate Link:       https://www.paypal.me/CodeBreaker
 Tags:              mailpoet, woo commerce, ecommerce, e-commerce, extension, newsletter, newsletters, subscription, checkout, integration, post-notification, email
 Requires at least: 4.7
 Tested up to:      4.9
-Stable tag:        4.0.0
+Stable tag:        4.0.1
 License:           GPLv3
 License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 
-Let your customers subscribe to your newsletter/s as they checkout with their purchase.
+Let your customers subscribe to your newsletters as they checkout with their purchase.
 
 == Description ==
 
@@ -38,6 +38,8 @@ This plugin will no longer be supported or maintained. I suggest you upgrade <a 
 > #### Additional Features
 > - Manage subscription from account dashboard.<br />
 > - Subscription notice added to order email if customers subscribed.<br />
+
+[Sign up](http://eepurl.com/c0hQe9) to be notified of release.
 
 **More information**
 
@@ -75,14 +77,14 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 == Frequently Asked Questions ==
 
-= Q1. Can I place the subscription field/s anywhere? =
-A1. Yes you can. Simply select the "Subscription Position" you want and the fields will be placed there for you.
+= Q1. Can I place the subscription field anywhere? =
+A1. Yes you can. Simply select the "Subscription Position" you want and the field will be placed there.
 
 = Q2. I need to double opt-in my customers to send a confirmation email. Do you have this option? =
-A2. Yes we do and it is enabled by default.
+A2. Yes and it is enabled by default.
 
 = Q3. Can my customers select which lists they wish to subscribe to? =
-A3. Yes they can. Simply set the "Multi-Subscription" option to "Yes". Then on the "Available Lists" select the lists your customers can select from.
+A3. Yes, simply set "Multi-Subscription" option to "Yes" under the "General" section and then on the "Available Lists" section, select the lists your customers can select from.
 
 = Q4. Will this extension work with MailPoet 3? =
 A4. No. If you are using MailPoet 3 then you will need to <a href="https://sebastiendumont.com/product-category/mailpoet/">upgrade MailPoet Checkout Subscription for WooCommerce</a> to the new version.
@@ -92,6 +94,9 @@ A5. Yes they will.
 
 == Changelog ==
 
+= v4.0.1 - 24/11/2017 =
+* Updated name of plugin fully.
+
 = v4.0.0 - 24/11/2017 =
 * Refactored to be more secure and stable.
 * Renamed main plugin file to match text domain. Must re-activate plugin manually.
@@ -99,6 +104,8 @@ A5. Yes they will.
 * Added two new action hooks for checkout field. See documentation.
 * Updated settings page to be compatible with WooCommerce fully again.
 * Updated settings JavaScript.
+* Requires WooCommerce v3.0.0 and up.
+* Requires WordPress v4.7 and up.
 * Tested with WooCommerce v3.2.5
 * Tested with WordPress v4.9
 

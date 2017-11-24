@@ -3,7 +3,7 @@
   "name": "mailpoet-woocommerce-add-on",
   "author": "seb86",
   "license": "GPL-3.0",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Let your customers subscribe to your newsletter or newsletters as they checkout with their purchase.",
   "homepage": "https://wordpress.org/plugins/mailpoet-woocommerce-add-on/",
   "main": "Gruntfile.js",
