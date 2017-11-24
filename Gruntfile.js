@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 			build: {
 				files: [{
 					expand: true, // Enable dynamic expansion.
-					src: ['assets/js/*.js', '!assets/js/*.min.js'], // Actual pattern(s) to match.
+					src: ['assets/js/admin/*.js', '!assets/js/admin/*.min.js'], // Actual pattern(s) to match.
 					ext: '.min.js', // Dest filepaths will have this extension.
 				}]
 			}
@@ -37,12 +37,12 @@ module.exports = function(grunt) {
 				'-W082': true, // Declarations should not be placed in blocks
 				'-W020': true, // Read only - error when assigning EO_SCRIPT_DEBUG a value.
 			},
-			all: [ 'assets/js/*.js', '!assets/js/*.min.js' ]
+			all: [ 'assets/js/admin/*.js', '!assets/js/admin/*.min.js' ]
 		},
 
 		watch: {
 			scripts: {
-				files: 'assets/js/*.js',
+				files: 'assets/js/admin/*.js',
 				tasks: ['jshint', 'uglify'],
 				options: {
 					debounceDelay: 250,
