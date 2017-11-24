@@ -4,7 +4,7 @@ Donate Link:       https://www.paypal.me/CodeBreaker
 Tags:              mailpoet, woo commerce, ecommerce, e-commerce, extension, newsletter, newsletters, subscription, checkout, integration, post-notification, email
 Requires at least: 4.7
 Tested up to:      4.9
-Stable tag:        3.0.2
+Stable tag:        4.0.0
 License:           GPLv3
 License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -93,6 +93,7 @@ A5. Yes they will.
 
 = v4.0.0 - 24/11/2017 =
 * Refactored to be more secure and stable.
+* Renamed main plugin file to match text domain. Must re-activate plugin manually.
 * Tested with WooCommerce v3.
 * Tested with WordPress v4.9.
 
@@ -150,4 +151,4 @@ A5. Yes they will.
 
 = v4.0.0 - 24/11/2017 =
 
-Last update for this integration between MailPoet 2 and WooCommerce. See plugin details on how to upgrade for MailPoet 3 support.
+Must re-activate plugin manually after updating. Last update for this integration between MailPoet 2 and WooCommerce. See plugin details on how to upgrade for MailPoet 3 support.

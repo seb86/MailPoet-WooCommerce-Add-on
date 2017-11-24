@@ -126,7 +126,7 @@ module.exports = function(grunt) {
 				replacements: [
 					{
 						from: /Stable tag:.*$/m,
-						to: "Stable tag: <%= pkg.version %>"
+						to: "Stable tag:        <%= pkg.version %>"
 					},
 					{
 						from: /Version:.*$/m,
@@ -134,12 +134,8 @@ module.exports = function(grunt) {
 					},
 					{
 						from: /public \$version = \'.*.'/m,
-						to: "public $version = '<%= pkg.version %>'"
+						to: "public static $version = '<%= pkg.version %>'"
 					},
-					{
-						from: /public \$version      = \'.*.'/m,
-						to: "public $version      = '<%= pkg.version %>'"
-					}
 				]
 			}
 		},

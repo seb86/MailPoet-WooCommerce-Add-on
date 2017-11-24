@@ -2,7 +2,7 @@
 /*
  * Plugin Name: MailPoet WooCommerce Add-on
  * Plugin URI:  https://wordpress.org/plugins/mailpoet-woocommerce-add-on
- * Version:     3.0.2
+ * Version:     4.0.0
  * Description: Let your customers subscribe to your newsletter as they checkout with their purchase.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
@@ -10,7 +10,7 @@
  * Text Domain: mailpoet-woocommerce-add-on
  * Domain Path: /languages/
  *
- * Requires at least: 4.5
+ * Requires at least: 4.7
  * Tested up to: 4.9
  * WC requires at least: 3.0.0
  * WC tested up to: 3.2.5

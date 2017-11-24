@@ -1,3 +1,9 @@
+## v4.0.0 - 24th November 2017
+* Refactored to be more secure and stable.
+* Renamed main plugin file to match text domain. Must re-activate plugin manually.
+* Tested with WooCommerce v3.
+* Tested with WordPress v4.9.
+
 ## v3.0.2 - 10th November 2015
 * Added another check if logged in user is subscribed for function - on_process_order(). This fixes an issue when a returning customer who is already subscribed places another order.
 * Moved subscription check and applied it to both single and multi subscriptions methods. This fixes the ability to order without subscribing and re-order if a previous customer.
