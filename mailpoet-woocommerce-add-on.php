@@ -179,6 +179,12 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On' ) ) {
 				add_action( 'admin_notices', array( $this, 'wc_mailpoet_admin_notice' ) );
 				return false;
 			}
+
+			// Check we're running MailPoet 2
+			if ( ! in_array( 'wysija-newsletters/index.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+				add_action( 'admin_notices', array( $this, 'requirement_mailpoet_notice' ), 10 );
+				return false;
+			}
 		} // END load_plugin()
 
 		/**
@@ -208,6 +214,17 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On' ) ) {
 		public function wc_mailpoet_admin_notice() {
 			echo '<div class="error"><p>' . sprintf( __( '%1$s requires at least %2$s v%3$s in order to function. Please upgrade %2$s.', 'mailpoet-woocommerce-add-on' ), 'MailPoet WooCommerce Add-on', 'WooCommerce', $this->required_woo ) . '</p></div>';
 		} // END wc_mailpoet_wc_admin_notice()
+
+		/**
+		 * Displays a warning message if MailPoet 2 is not active or installed.
+		 *
+		 * @access  public
+		 * @since   3.0.0
+		 * @version 4.0.0
+		 */
+		public function requirement_mailpoet_notice() {
+			echo '<div class="error"><p>' . sprintf( __( 'Hold on a minute. You need to <a href="' . admin_url( '/plugin-install.php?s=MailPoet+2&tab=search&type=term' ) . '">install MailPoet 2</a> first to use <strong>%s</strong>.', 'mailpoet-woocommerce-add-on' ), 'MailPoet Checkout Subscription for WooCommerce (Legacy)' ) . '</p></div>';
+		} // END requirement_mailpoet_notice()
 
 		/*-----------------------------------------------------------------------------------*/
 		/*  Localization                                                                     */

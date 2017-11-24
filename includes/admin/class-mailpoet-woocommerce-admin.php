@@ -37,7 +37,6 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On_Admin' ) ) {
 		 * @access  public
 		 */
 		public function includes() {
-			include( MailPoet_WooCommerce_Add_On::plugin_path() . '/includes/admin/class-mailpoet-woocommerce-admin-notices.php' );
 			include( MailPoet_WooCommerce_Add_On::plugin_path() . '/includes/admin/class-mailpoet-woocommerce-admin-settings.php' );
 		} // END includes()
 
