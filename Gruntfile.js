@@ -153,7 +153,8 @@ module.exports = function(grunt) {
 					'!package.json',
 					'!node_modules/**',
 					'!.DS_Store',
-					'!npm-debug.log'
+					'!npm-debug.log',
+					'!*.sh'
 				],
 				dest: '<%= pkg.name %>',
 				expand: true,
