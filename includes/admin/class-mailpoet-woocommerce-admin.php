@@ -2,55 +2,58 @@
 /**
  * MailPoet WooCommerce Add-on Admin.
  *
- * @since    1.0.0
+ * @class    MailPoet_WooCommerce_Add_On_Admin
  * @author   Sébastien Dumont
  * @category Admin
  * @package  MailPoet WooCommerce Add-on
  * @license  GPL-2.0+
- * @version  3.0.0
+ * @since    1.0.0
+ * @version  4.0.0
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
-if(! defined('ABSPATH')) exit; // Exit if accessed directly
-
-if(! class_exists('MailPoet_WooCommerce_Add_On_Admin')){
+if ( ! class_exists( 'MailPoet_WooCommerce_Add_On_Admin' ) ) {
 
 	class MailPoet_WooCommerce_Add_On_Admin {
 
 		/**
-		 * Constructor
+		 * Load the plugin.
 		 *
-		 * @since  1.0.0
 		 * @access public
 		 */
 		public function __construct() {
-			add_action('init', array($this, 'includes'), 10);
-			add_filter('plugin_action_links_'.plugin_basename(MAILPOET_WOOCOMMERCE_FILE), array($this, 'action_links'));
-			add_filter('plugin_row_meta', array($this, 'plugin_row_meta'), 10, 2);
+			add_action( 'admin_init', array( $this, 'includes' ), 10 );
+			add_filter( 'plugin_action_links_' . plugin_basename( MAILPOET_WOOCOMMERCE_FILE ), array( $this, 'action_links' ) );
+			add_filter( 'plugin_row_meta', array( $this, 'plugin_meta_links' ), 10, 3 );
 		}
 
 		/**
 		 * Include any classes we need within admin.
 		 *
-		 * @since  1.0.0
-		 * @access public
+		 * @since   1.0.0
+		 * @version 4.0.0
+		 * @access  public
 		 */
 		public function includes() {
-			include('class-mailpoet-woocommerce-admin-notices.php');
-			include('class-mailpoet-woocommerce-admin-settings.php');
+			include( MailPoet_WooCommerce_Add_On::plugin_path() . '/includes/admin/class-mailpoet-woocommerce-admin-notices.php' );
+			include( MailPoet_WooCommerce_Add_On::plugin_path() . '/includes/admin/class-mailpoet-woocommerce-admin-settings.php' );
 		} // END includes()
 
 		/**
 		 * Plugin action links.
 		 *
-		 * @since  1.0.0
-		 * @access public
-		 * @param  mixed $links
-		 * @return void
+		 * @since   1.0.0
+		 * @version 4.0.0
+		 * @access  public
+		 * @param   mixed $links
+		 * @return  void
 		 */
 		public function action_links( $links ) {
-			if( current_user_can('manage_woocommerce') ){
+			if ( current_user_can( 'manage_woocommerce' ) ){
 				$plugin_links = array(
-					'<a href="'.admin_url( 'admin.php?page=wc-settings&tab='.MAILPOET_WOOCOMMERCE_SLUG ).'">'.__('Settings', 'mailpoet-woocommerce-add-on').'</a>',
+					'<a href="' . admin_url( 'admin.php?page=wc-settings&tab=mailpoet-woocommerce-add-on">' . __( 'Settings', 'mailpoet-woocommerce-add-on' ) . '</a>',
 				);
 
 				return array_merge( $plugin_links, $links );
@@ -60,28 +63,23 @@ if(! class_exists('MailPoet_WooCommerce_Add_On_Admin')){
 		} // END action_links()
 
 		/**
-		 * Plugin row meta links
+		 * Show row meta on the plugin screen.
 		 *
-		 * @since  3.0.0
 		 * @access public
-		 * @param  array  $input already defined meta links
-		 * @param  string $file  plugin file path and name being processed
-		 * @return array  $input
+		 * @since  4.0.0
+		 * @param  mixed $links Plugin Row Meta
+		 * @param  mixed $file  Plugin Base file
+		 * @return array
 		 */
-		public function plugin_row_meta( $input, $file ) {
-			if( plugin_basename(MAILPOET_WOOCOMMERCE_FILE) !== $file) {
-				return $input;
+		public function plugin_meta_links( $links, $file, $data ) {
+			if ( $file == MailPoet_WooCommerce_Add_On::plugin_basename() ) {
+				$links[ 1 ] = sprintf( __( 'Developed By %s', 'mailpoet-woocommerce-add-on' ), '<a href="' . $data[ 'AuthorURI' ] . '" target="_blank">' . $data[ 'Author' ] . '</a>' );
+
+				$links[ 2 ] = '<a href="' . esc_url( 'https://github.com/seb86/MailPoet-WooCommerce-Add-on/wiki/') . '" target="_blank">' . __( 'Documentation', 'mailpoet-woocommerce-add-on' ) . '</a>';
 			}
 
-			$links = array(
-				'<a href="'.esc_url('https://github.com/seb86/MailPoet-WooCommerce-Add-on/wiki/').'" target="_blank">'.__('Documentation', 'mailpoet-woocommerce-add-on').'</a>',
-				'<a href="'.esc_url('https://wordpress.org/support/plugin/mailpoet-woocommerce-add-on/').'" target="_blank">'.__('Community Support', 'mailpoet-woocommerce-add-on').'</a>'
-			);
-
-			$input = array_merge( $input, $links );
-
-			return $input;
-		} // END plugin_row_meta()
+			return $links;
+		} // END plugin_meta_links()
 
 	} // END class
 

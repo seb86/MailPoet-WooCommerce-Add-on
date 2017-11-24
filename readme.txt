@@ -94,6 +94,8 @@ A5. Yes they will.
 = v4.0.0 - 24/11/2017 =
 * Refactored to be more secure and stable.
 * Renamed main plugin file to match text domain. Must re-activate plugin manually.
+* Added two new filters that controls the display of confirmation and thank you notice once customer has subscribed.
+* Added two new action hooks for checkout field. See documentation.
 * Tested with WooCommerce v3.
 * Tested with WordPress v4.9.
 
