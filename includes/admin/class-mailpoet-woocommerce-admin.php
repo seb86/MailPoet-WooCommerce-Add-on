@@ -25,7 +25,7 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On_Admin' ) ) {
 		 */
 		public function __construct() {
 			add_action( 'admin_init', array( $this, 'includes' ), 10 );
-			add_filter( 'plugin_action_links_' . plugin_basename( MAILPOET_WOOCOMMERCE_FILE ), array( $this, 'action_links' ) );
+			add_filter( 'plugin_action_links_' . MailPoet_WooCommerce_Add_On::plugin_basename(), array( $this, 'action_links' ) );
 			add_filter( 'plugin_row_meta', array( $this, 'plugin_meta_links' ), 10, 3 );
 		}
 

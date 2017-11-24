@@ -26,7 +26,7 @@ if ( ! class_exists('MailPoet_WooCommerce_Add_On_Install' ) ) {
 		 * @version 4.0.0
 		 */
 		public function __construct() {
-			register_activation_hook( MAILPOET_WOOCOMMERCE_FILE, array( $this, 'install' ) );
+			register_activation_hook( MailPoet_WooCommerce_Add_On::plugin_filename(), array( $this, 'install' ) );
 		}
 
 		/**
