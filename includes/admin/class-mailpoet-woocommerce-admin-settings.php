@@ -94,22 +94,21 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On_Settings' ) ) {
 						'id'       => 'mailpoet_woocommerce_enable_checkout',
 						'type'     => 'checkbox',
 						'default'  => '1',
-						'autoload' => true
 					),
 
 					array(
 						'title'    => __( 'Multi-Subscription?', 'mailpoet-woocommerce-add-on' ),
-						'desc'     => sprintf( __( 'If you have more than one newsletter. Allow your customers to select which lists they wish to subscribe too. <a class="button button-primary" href="%s" target="_blank">Edit Lists</a> <a class="button" href="%s">Available Lists</a>', 'mailpoet-woocommerce-add-on' ), admin_url( 'admin.php?page=wysija_subscribers&action=lists' ), admin_url( 'admin.php?page=wc-settings&tab=mailpoet-woocommerce-add-on&section=lists' ) ),
+						'desc'     => sprintf( __( 'Have more than one newsletter?<br /><a class="button button-primary" href="%s" target="_blank">Edit Lists</a> <a class="button" href="%s">Available Lists</a>', 'mailpoet-woocommerce-add-on' ), admin_url( 'admin.php?page=wysija_subscribers&action=lists' ), admin_url( 'admin.php?page=wc-settings&tab=mailpoet-woocommerce-add-on&section=lists' ) ),
 						'desc_tip' => false,
 						'id'       => 'mailpoet_woocommerce_customer_selects',
-						'class'    => 'chosen-select',
+						'class'    => 'wc-enhanced-select',
+						'css'      => 'min-width:100px;',
 						'default'  => 'no',
 						'type'     => 'select',
 						'options'  => array(
 							'no'  => __( 'No', 'mailpoet-woocommerce-add-on' ),
 							'yes' => __( 'Yes', 'mailpoet-woocommerce-add-on' ),
 						),
-						'autoload' => false
 					),
 
 					array(
@@ -118,7 +117,6 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On_Settings' ) ) {
 						'id'       => 'mailpoet_woocommerce_double_optin',
 						'type'     => 'checkbox',
 						'default'  => 'yes',
-						'autoload' => true
 					),
 
 					array(
@@ -126,26 +124,24 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On_Settings' ) ) {
 						'desc'     => __( 'The default state of the subscribe checkbox. Be aware some countries have laws against using opt-out checkboxes.', 'mailpoet-woocommerce-add-on' ),
 						'desc_tip' => true,
 						'id'       => 'mailpoet_woocommerce_checkbox_status',
-						'class'    => 'single_list_only',
+						'class'    => 'wc-enhanced-select',
+						'css'      => 'min-width:100px;',
 						'default'  => 'unchecked',
 						'type'     => 'select',
 						'options'  => array(
 							'checked'   => __( 'Checked', 'mailpoet-woocommerce-add-on' ),
 							'unchecked' => __( 'Un-checked', 'mailpoet-woocommerce-add-on' )
 						),
-						'autoload' => true
 					),
 
 					array(
 						'name'        => __( 'Subscribe checkbox label', 'mailpoet-woocommerce-add-on' ),
-						'desc'        => __( 'The text you want to display next to the "Subscribe to Newsletter/s" checkbox.', 'mailpoet-woocommerce-add-on' ),
-						'desc_tip'    => false,
+						'desc'        => __( 'The label you want to display next to the "Subscribe to Newsletter" checkbox.', 'mailpoet-woocommerce-add-on' ),
+						'desc_tip'    => true,
 						'id'          => 'mailpoet_woocommerce_checkout_label',
 						'css'         => 'min-width:350px;',
 						'type'        => 'text',
-						'placeholder' => __( 'Yes, please subscribe me to the newsletter/s.', 'mailpoet-woocommerce-add-on' ),
-						'class'       => 'single_list_only',
-						'autoload'    => true
+						'placeholder' => __( 'Yes, please subscribe me to the newsletter.', 'mailpoet-woocommerce-add-on' ),
 					),
 
 					array(
@@ -154,6 +150,8 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On_Settings' ) ) {
 						'desc_tip' => true,
 						'id'       => 'mailpoet_woocommerce_subscription_position',
 						'default'  => 'after_order_notes',
+						'class'    => 'wc-enhanced-select',
+						'css'      => 'min-width:300px;',
 						'type'     => 'select',
 						'options'  => apply_filters( 'mailpoet_woocommerce_subscription_position', array(
 							'before_checkout_billing_form'  => __( 'Before Billing Form', 'mailpoet-woocommerce-add-on' ),
@@ -164,7 +162,6 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On_Settings' ) ) {
 							'after_order_notes'             => __( 'After Order Notes', 'mailpoet-woocommerce-add-on' ),
 							'review_order_after_submit'     => __( 'After Order Submit', 'mailpoet-woocommerce-add-on' )
 						)),
-						'autoload'  => true
 					),
 
 					array(
@@ -248,7 +245,7 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On_Settings' ) ) {
 
 			$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
-			wp_enqueue_script( 'mailpoet_woocommerce_settings',  MAILPOET_WOOCOMMERCE_URL_PATH.'/assets/js/admin/settings' . $suffix . '.js', array( 'jquery', 'select2' ), MailPoet_WooCommerce_Add_On::$version, true );
+			wp_enqueue_script( 'mailpoet_woocommerce_settings',  MailPoet_WooCommerce_Add_on::plugin_url() . '/assets/js/admin/settings' . $suffix . '.js', array( 'jquery', 'selectWoo' ), MailPoet_WooCommerce_Add_On::$version, true );
 
 			woocommerce_admin_fields( self::get_settings( $current_section ) );
 

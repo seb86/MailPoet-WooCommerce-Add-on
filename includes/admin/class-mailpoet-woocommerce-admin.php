@@ -53,7 +53,7 @@ if ( ! class_exists( 'MailPoet_WooCommerce_Add_On_Admin' ) ) {
 		public function action_links( $links ) {
 			if ( current_user_can( 'manage_woocommerce' ) ){
 				$plugin_links = array(
-					'<a href="' . admin_url( 'admin.php?page=wc-settings&tab=mailpoet-woocommerce-add-on">' . __( 'Settings', 'mailpoet-woocommerce-add-on' ) . '</a>',
+					'<a href="' . admin_url( 'admin.php?page=wc-settings&tab=mailpoet-woocommerce-add-on').'">' . __( 'Settings', 'mailpoet-woocommerce-add-on' ) . '</a>'
 				);
 
 				return array_merge( $plugin_links, $links );
