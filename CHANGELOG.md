@@ -1,8 +1,8 @@
 ## v4.0.0 - 24th November 2017
 * Refactored to be more secure and stable.
 * Renamed main plugin file to match text domain. Must re-activate plugin manually.
-* Added two new filters that controls the display of confirmation and thank you notice once customer has subscribed.
-* Added two new action hooks for checkout field. See documentation.
+* Added two new filters that controls the display of confirmation and thank you notice once customer has subscribed. [See documentation](https://github.com/seb86/MailPoet-WooCommerce-Add-on/wiki).
+* Added two new action hooks for checkout field.  [See documentation](https://github.com/seb86/MailPoet-WooCommerce-Add-on/wiki)
 * Updated settings page to be compatible with WooCommerce fully again.
 * Updated settings JavaScript.
 * Tested with WooCommerce v3.2.5
