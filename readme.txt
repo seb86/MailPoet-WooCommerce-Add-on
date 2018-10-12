@@ -33,13 +33,8 @@ MailPoet Checkout Subscription for WooCommerce (Legacy) is in need of translatio
 
 = Support =
 
-This plugin will no longer be supported or maintained. I suggest you upgrade <a href="https://sebastiendumont.com/product-category/mailpoet/">MailPoet Checkout Subscription for WooCommerce</a> to receive continued support. <a href="https://wordpress.org/plugins/mailpoet/">MailPoet 3</a> will be required. All previous settings will be carried over.
+This plugin will no longer be supported or maintained.
 
-> #### Additional Features
-> - Manage subscription from account dashboard.<br />
-> - Subscription notice added to order email if customers subscribed.<br />
-
-[Sign up](http://eepurl.com/c0hQe9) to be notified of release.
 
 **More information**
 
@@ -87,10 +82,7 @@ A2. Yes and it is enabled by default.
 A3. Yes, simply set "Multi-Subscription" option to "Yes" under the "General" section and then on the "Available Lists" section, select the lists your customers can select from.
 
 = Q4. Will this extension work with MailPoet 3? =
-A4. No. If you are using MailPoet 3 then you will need to <a href="https://sebastiendumont.com/product-category/mailpoet/">upgrade MailPoet Checkout Subscription for WooCommerce</a> to the new version.
-
-= Q5. Will my settings be carried over to the updated integration if I upgrade? =
-A5. Yes they will.
+A4. If you are using MailPoet 3 then this extension will not work for you.
 
 == Changelog ==
 
